@@ -1,0 +1,31 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #ccc;
+    margin-bottom: 5px;
+    padding: 20px;
+}
+
+footer {
+    background-color: #ccc;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.danhmucsanpham{
+    padding: 0px 50px;
+    width: calc(100%-100px);
+}
+
+table, td, th {
+    border: 1px solid black;
+    text-align: center;
+  }
+  
+table {
+    border-collapse: collapse;
+    width: 50%;
+    margin-top: 20px;
+}
