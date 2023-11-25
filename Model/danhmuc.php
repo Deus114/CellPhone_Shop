@@ -16,7 +16,7 @@
         $conn->exec($sql);
     }
 
-    function getproduct($id) {
+    function getdm($id) {
         $conn=connectdb();
         $stmt = $conn->prepare("SELECT * FROM tbl_danhmuc WHERE id=".$id);
         $stmt->execute();
@@ -26,7 +26,7 @@
         return $kq;
     }
 
-    function modifyproduct($id, $tensp) {
+    function modifydm($id, $tensp) {
         $conn=connectdb();
         $sql = "UPDATE tbl_danhmuc SET tendanhmuc='".$tensp."' WHERE id=".$id;
         // Prepare statement

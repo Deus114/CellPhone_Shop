@@ -26,19 +26,20 @@
                 $kq=getall_dm();
                 include "View/danhmuc.php";
                 break;
-
+            
+            // Chỉnh sửa danh mục sản phẩm
             case 'modifyproduct':
                 // Lấy ra sản phẩm tương ứng
                 if(isset($_GET['id'])){
                     $id=$_GET['id'];
-                    $product=getproduct($id);
+                    $product=getdm($id);
                     $kq=getall_dm();
                     include "View/modifyproduct.php";
                 }
                 if(isset($_POST['id'])){
                     $id=$_POST['id'];
                     $tensp=$_POST['tensp'];
-                    modifyproduct($id, $tensp);
+                    modifydm($id, $tensp);
                     $kq=getall_dm();
                     include "View/danhmuc.php";
                 }
@@ -92,7 +93,6 @@
                 break;
 
             case 'product':
-                $uploadOk = 1;
                 // Lấy danh sách danh mục
                 $listdm=getall_dm();
                 // Lấy danh sách sản phẩm
@@ -100,6 +100,58 @@
                 include "View/product.php";
                 break;
             
+            // Chuyển tới trang cập nhật thông tin sản phẩm
+            case 'updateprd':
+                // Lấy danh sách danh mục
+                $listdm=getall_dm();
+                if(isset($_GET['id'])&&($_GET['id']>0)){
+                    $prd=getproduct($_GET['id']);
+                }
+                // Lấy danh sách sản phẩm
+                $kq=getall_prd();
+                include "View/updateprd.php";
+                break;
+            
+            // Khi đã sửa đổi thông tin và bấm nút cập nhật ở trang cập nhật thông tin sản phẩm
+            case 'updateproduct':
+                // Lấy danh sách danh mục
+                $listdm=getall_dm();
+                if(isset($_POST['update'])&&($_POST['update'])){
+                    $nameprd=$_POST['nameprd'];
+                    $gia=$_POST['gia'];
+                    $iddm=$_POST['iddm'];
+                    $id=$_POST['id'];
+                    if($_FILES["img"]["name"] != ""){
+                        // Lưu đường dẫn hình ảnh vào db và upload hình ảnh lên host
+                        $target_dir = "../upload/";
+                        $target_file = $target_dir . basename($_FILES["img"]["name"]);
+                        $img=$target_file;
+                        $uploadOk = 1;
+                        $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
+                        // Allow certain file formats
+                        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+                        && $imageFileType != "gif" ) {
+                        $uploadOk = 0;
+                        }
+                    } else {
+                        $img="";
+                    }
+                    modifyproduct($id, $nameprd, $img, $gia, $iddm);
+                }
+                // Lấy danh sách sản phẩm
+                $kq=getall_prd();
+                include "View/product.php";
+                break;
+            
+            case 'deleteprd':
+                if(isset($_GET['id'])){
+                    $id=$_GET['id'];
+                    deleteprd($id);
+                }
+                $kq=getall_prd();
+                include "View/product.php";
+                break;
+
             default :
                 include "View/home.php";
                 break;
