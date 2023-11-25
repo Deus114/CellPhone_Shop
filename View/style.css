@@ -1,0 +1,19 @@
+body {
+    margin: 0;
+}
+
+header {
+    background-color: #ccc;
+    margin-bottom: 5px;
+    padding: 20px;
+}
+
+footer {
+    background-color: #ccc;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.login{
+    margin-left: 45%;
+}
