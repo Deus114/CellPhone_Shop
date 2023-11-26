@@ -8,9 +8,18 @@
 </head>
 <body>
     <header>
-        <h2>ADMIN</h2>
+        <h2>Trang chủ</h2>
         <nav>
             <a href="index.php">Trang chủ</a> |
-            <a href="index.php?act=login">Đăng nhập</a>
+            <?php if(isset($_SESSION['role'])&&($_SESSION['role']==0)){ ?>
+                    <!-- Chuyển tới trang user info -->
+                    <a href="index.php?act=userinfo"><?php echo $_SESSION['name'] ?></a> |
+                    <a href="index.php?act=thoat">Thoát</a>
+            <?php
+                } else {
+            ?>
+                <a href="index.php?act=login">Đăng nhập</a> |
+                <a href="index.php?act=dangki">Đăng Kí</a>
+            <?php } ?>
         </nav>
     </header>

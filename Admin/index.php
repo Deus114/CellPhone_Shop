@@ -5,6 +5,7 @@
     include "../Model/danhmuc.php";
     include "../Model/product.php";
 
+    // Kiểm tra role để biết có phải là admin không
     if(isset($_SESSION['role']) && ($_SESSION['role']==1)){
         // Header
         include "View/header.php";
@@ -155,7 +156,7 @@
 
                 case 'thoat':
                     if(isset($_SESSION['role'])) unset($_SESSION['role']);
-                    header('location: ../View/login.php');
+                    header('location: ../index.php');
                     break;
                 
                 default :
@@ -169,5 +170,6 @@
 
         //Footer
         include "View/footer.php";
-    } else header('location: ../View/login.php');
+    } else 
+        header('location: ../index.php');
 ?>
