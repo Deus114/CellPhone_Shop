@@ -51,6 +51,27 @@
                 header('location: index.php');
                 break;
 
+            case 'signup':
+                include "View/signup.php";
+                break;
+
+            case 'dangki':
+                if(isset($_POST['dangki']) && ($_POST['dangki'])){
+                    $user=$_POST['user'];
+                    $pass=$_POST['password'];
+                    $email=$_POST['email'];
+                    $kq=checkuser($user);
+                    if(count($kq) == 0){
+                        addnewuser($user, $pass, $email);
+                        $success_text="Đăng kí thành công mời bạn đăng nhập";
+                    }
+                    else {
+                        $err_text="Tên đăng nhập đã tồn tại. Vui lòng chọn tên đăng nhập khác";
+                    }
+                }
+                include "View/signup.php";
+                break;
+
             default:
                 include "View/home.php";
         }

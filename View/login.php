@@ -4,7 +4,7 @@
     <form action="index.php?act=dangnhap" method="post">
         <input type="text" name="user" id="">
         <br></br>
-        <input type="text" name="password" id="">
+        <input type="password" name="password" id="">
         <br></br>
         <input type="submit" name="dangnhap" value="Đăng nhập">
         <?php
