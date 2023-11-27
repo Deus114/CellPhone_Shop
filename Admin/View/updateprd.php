@@ -4,6 +4,7 @@
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=updateproduct" method="post" enctype="multipart/form-data">
         <!-- Chọn danh mục để thêm vào -->
+        <p>Danh mục: </p>
         <select name="iddm">
             <option value="0">--Chọn danh mục--</option>
             <?php
@@ -19,15 +20,19 @@
                 }
             ?>
         </select>
+        <p>Tên sản phẩm: </p>
         <input type="text" name="nameprd" id="" value="<?=$iddmcur=$prd[0]['tensp']?>">
-        <input type="file" name="img" id="">
+        <p>Hình ảnh: </p>
         <img src="<?=$iddmcur=$prd[0]['image']?>" width=80 alt="">
+        <input type="file" name="img" id="">
         <?php
             if(isset($uploadOk)&&($uploadOk == 0)){
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             }
         ?>
+        <p>Giá: </p>
         <input type="text" name="gia" id="" value="<?=$iddmcur=$prd[0]['gia']?>">
+        <p>Tiêu biểu: </p>
         <select name="sptieubieu">
             <?php
                 $sptieubieucurr=$prd[0]['sptieubieu'];
@@ -41,13 +46,15 @@
                 }
             ?>
         </select>
+        <p>Mô tả: </p>
         <input type="text" name="mota" id="" value="<?=$iddmcur=$prd[0]['mota']?>">
+        <p>Chi tiết: </p>
         <input type="text" name="chitiet" id="" value="<?=$iddmcur=$prd[0]['chitiet']?>">
         <input type="hidden" name="id" value="<?=$iddmcur=$prd[0]['id']?>">
+        <p>Hiển thị: </p>
         <select name="hienthi">
             <?php
                 $hienthicurr=$prd[0]['hienthi'];
-                // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
                 if($hienthicurr==0){
                     echo '<option value="0" selected>0</option>';
                     echo '<option value="1">1</option>';

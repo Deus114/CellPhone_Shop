@@ -3,9 +3,20 @@
     
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=modifydanhmuc" method="post">
-        <input type="text" name="tendanhmuc" value="<?=$product[0]['tendanhmuc']?>">
-        <input type="text" name="hienthi" value="<?=$product[0]['hienthi']?>">
-        <input type="hidden" name="id" value="<?=$product[0]['id']?>">
+        <input type="text" name="tendanhmuc" value="<?=$dm[0]['tendanhmuc']?>">
+        <select name="hienthi">
+            <?php
+                $hienthicurr=$dm[0]['hienthi'];
+                if($hienthicurr==0){
+                    echo '<option value="0" selected>0</option>';
+                    echo '<option value="1">1</option>';
+                } else {
+                    echo '<option value="0">0</option>';
+                    echo '<option value="1" selected>1</option>';
+                }
+            ?>
+        </select>
+        <input type="hidden" name="id" value="<?=$dm[0]['id']?>">
         <input type="submit" name="modify" value="Cập nhật">
     </form>
 

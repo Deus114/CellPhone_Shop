@@ -34,7 +34,7 @@
                     // Lấy ra sản phẩm tương ứng
                     if(isset($_GET['id'])){
                         $id=$_GET['id'];
-                        $product=getdm($id);
+                        $dm=getdm($id);
                         $kq=getall_dm();
                         include "View/modifydanhmuc.php";
                     }
