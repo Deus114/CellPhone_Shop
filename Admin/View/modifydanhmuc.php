@@ -1,5 +1,5 @@
 <div class="danhmucsanpham">
-    <h2>DANH MỤC SẢN PHẨM</h2>
+    <h2>CẬP NHẬT DANH MỤC SẢN PHẨM</h2>
     
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=modifydanhmuc" method="post">
