@@ -26,9 +26,9 @@
         return $kq;
     }
 
-    function modifydm($id, $tensp) {
+    function modifydm($id, $tendanhmuc, $hienthi) {
         $conn=connectdb();
-        $sql = "UPDATE tbl_danhmuc SET tendanhmuc='".$tensp."' WHERE id=".$id;
+        $sql = "UPDATE tbl_danhmuc SET tendanhmuc='".$tendanhmuc."', hienthi='".$hienthi."' WHERE id=".$id;
         // Prepare statement
         $stmt = $conn->prepare($sql);
         // execute the query

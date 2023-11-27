@@ -4,7 +4,7 @@
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=updateproduct" method="post" enctype="multipart/form-data">
         <!-- Chọn danh mục để thêm vào -->
-        <select name="iddm" id="">
+        <select name="iddm">
             <option value="0">--Chọn danh mục--</option>
             <?php
                 $iddmcur=$prd[0]['iddanhmuc'];
@@ -28,7 +28,35 @@
             }
         ?>
         <input type="text" name="gia" id="" value="<?=$iddmcur=$prd[0]['gia']?>">
+        <select name="sptieubieu">
+            <?php
+                $sptieubieucurr=$prd[0]['sptieubieu'];
+                // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
+                if($sptieubieucurr==0){
+                    echo '<option value="0" selected>0</option>';
+                    echo '<option value="1">1</option>';
+                } else {
+                    echo '<option value="0">0</option>';
+                    echo '<option value="1" selected>1</option>';
+                }
+            ?>
+        </select>
+        <input type="text" name="mota" id="" value="<?=$iddmcur=$prd[0]['mota']?>">
+        <input type="text" name="chitiet" id="" value="<?=$iddmcur=$prd[0]['chitiet']?>">
         <input type="hidden" name="id" value="<?=$iddmcur=$prd[0]['id']?>">
+        <select name="hienthi">
+            <?php
+                $hienthicurr=$prd[0]['hienthi'];
+                // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
+                if($hienthicurr==0){
+                    echo '<option value="0" selected>0</option>';
+                    echo '<option value="1">1</option>';
+                } else {
+                    echo '<option value="0">0</option>';
+                    echo '<option value="1" selected>1</option>';
+                }
+            ?>
+        </select>
         <input type="submit" name="update" value="Cập nhật">
     </form>
 
@@ -39,6 +67,10 @@
             <th>Tên sản phẩm</th>
             <th>Hình ảnh</th>
             <th>Giá</th>
+            <th>Tiêu biểu</th>
+            <th>Mô tả</th>
+            <th>Chi tiết</th>
+            <th>Hiển thị</th>
             <th>Hành động</th>
         </tr>
         <?php
@@ -53,6 +85,10 @@
                         <td>'.$item['tensp'].'</td>
                         <td><img src="'.$item['image'].'" width="80px"></td>
                         <td>'.$item['gia'].'</td>
+                        <td>'.$item['sptieubieu'].'</td>
+                        <td>'.$item['mota'].'</td>
+                        <td>'.$item['chitiet'].'</td>
+                        <td>'.$item['hienthi'].'</td>
                         <td><a href="index.php?act=updateprd&id='.$item['id'].'">Sửa</a> | <a href="index.php?act=deleteprd&id='.$item['id'].'">Xóa</a></td>
                     </tr>
                     ';

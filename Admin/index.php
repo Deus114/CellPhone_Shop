@@ -30,18 +30,19 @@
                     break;
                 
                 // Chỉnh sửa danh mục sản phẩm
-                case 'modifyproduct':
+                case 'modifydanhmuc':
                     // Lấy ra sản phẩm tương ứng
                     if(isset($_GET['id'])){
                         $id=$_GET['id'];
                         $product=getdm($id);
                         $kq=getall_dm();
-                        include "View/modifyproduct.php";
+                        include "View/modifydanhmuc.php";
                     }
                     if(isset($_POST['id'])){
                         $id=$_POST['id'];
-                        $tensp=$_POST['tensp'];
-                        modifydm($id, $tensp);
+                        $tendanhmuc=$_POST['tendanhmuc'];
+                        $hienthi=$_POST['hienthi'];
+                        modifydm($id, $tendanhmuc, $hienthi);
                         $kq=getall_dm();
                         include "View/danhmuc.php";
                     }
@@ -57,6 +58,7 @@
                     include "View/danhmuc.php";
                     break;
 
+                //Thêm một sản phẩm mới
                 case 'addprd':
                     if(isset($_POST['addnewprd'])&&($_POST['addnewprd'])){
                         $nameprd=$_POST['nameprd'];
@@ -65,7 +67,7 @@
                         // Lưu đường dẫn hình ảnh vào db và upload hình ảnh lên host
                         $target_dir = "../upload/";
                         $target_file = $target_dir . basename($_FILES["img"]["name"]);
-                        $img=$target_file;
+                        $img= $target_file;
                         $uploadOk = 1;
                         $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
                         // Allow certain file formats
@@ -123,6 +125,10 @@
                         $gia=$_POST['gia'];
                         $iddm=$_POST['iddm'];
                         $id=$_POST['id'];
+                        $sptieubieu=$_POST['sptieubieu'];
+                        $mota=$_POST['mota'];
+                        $chitiet=$_POST['chitiet'];
+                        $hienthi=$_POST['hienthi'];
                         if($_FILES["img"]["name"] != ""){
                             // Lưu đường dẫn hình ảnh vào db và upload hình ảnh lên host
                             $target_dir = "../upload/";
@@ -138,7 +144,7 @@
                         } else {
                             $img="";
                         }
-                        modifyproduct($id, $nameprd, $img, $gia, $iddm);
+                        modifyproduct($id, $nameprd, $img, $gia, $iddm, $sptieubieu, $mota, $chitiet, $hienthi);
                     }
                     // Lấy danh sách sản phẩm
                     $kq=getall_prd();
@@ -150,6 +156,7 @@
                         $id=$_GET['id'];
                         deleteprd($id);
                     }
+                    $listdm=getall_dm();
                     $kq=getall_prd();
                     include "View/product.php";
                     break;

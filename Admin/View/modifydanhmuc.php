@@ -2,8 +2,9 @@
     <h2>DANH MỤC SẢN PHẨM</h2>
     
     <!-- form để thêm mới sản phẩm -->
-    <form action="index.php?act=modifyproduct" method="post">
-        <input type="text" name="tensp" id="" value="<?=$product[0]['tendanhmuc']?>">
+    <form action="index.php?act=modifydanhmuc" method="post">
+        <input type="text" name="tendanhmuc" value="<?=$product[0]['tendanhmuc']?>">
+        <input type="text" name="hienthi" value="<?=$product[0]['hienthi']?>">
         <input type="hidden" name="id" value="<?=$product[0]['id']?>">
         <input type="submit" name="modify" value="Cập nhật">
     </form>
@@ -27,7 +28,7 @@
                         <td>'.$stt.'</td>
                         <td>'.$danhmuc['tendanhmuc'].'</td>
                         <td>'.$danhmuc['hienthi'].'</td>
-                        <td><a href="index.php?act=modifyproduct&id='.$danhmuc['id'].'">Sửa</a> | <a href="index.php?act=deletedanhmuc&id='.$danhmuc['id'].'">Xóa</a></td>
+                        <td><a href="index.php?act=modifydanhmuc&id='.$danhmuc['id'].'">Sửa</a> | <a href="index.php?act=deletedanhmuc&id='.$danhmuc['id'].'">Xóa</a></td>
                     </tr>
                     ';
                     $stt++;

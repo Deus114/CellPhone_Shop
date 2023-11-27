@@ -26,7 +26,7 @@
                         <td>'.$stt.'</td>
                         <td>'.$danhmuc['tendanhmuc'].'</td>
                         <td>'.$danhmuc['hienthi'].'</td>
-                        <td><a href="index.php?act=modifyproduct&id='.$danhmuc['id'].'">Sửa</a> | <a href="index.php?act=deletedanhmuc&id='.$danhmuc['id'].'">Xóa</a></td>
+                        <td><a href="index.php?act=modifydanhmuc&id='.$danhmuc['id'].'">Sửa</a> | <a href="index.php?act=deletedanhmuc&id='.$danhmuc['id'].'">Xóa</a></td>
                     </tr>
                     ';
                     $stt++;

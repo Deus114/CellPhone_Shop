@@ -26,12 +26,12 @@
         return $kq;
     }
 
-    function modifyproduct($id, $tensp, $img, $gia, $iddm) {
+    function modifyproduct($id, $nameprd, $img, $gia, $iddm, $sptieubieu, $mota, $chitiet, $hienthi) {
         $conn=connectdb();
         if($img == "")
-            $sql = "UPDATE tbl_sanpham SET tensp='".$tensp."', gia='".$gia."', iddanhmuc='".$iddm."' WHERE id=".$id;
+            $sql = "UPDATE tbl_sanpham SET tensp='".$nameprd."', gia='".$gia."', iddanhmuc='".$iddm."', sptieubieu='".$sptieubieu."', mota='".$mota."', chitiet='".$chitiet."', hienthi='".$hienthi."' WHERE id=".$id;
         else 
-            $sql = "UPDATE tbl_sanpham SET tensp='".$tensp."', image='".$img."', gia='".$gia."', iddanhmuc='".$iddm."' WHERE id=".$id;    
+            $sql = "UPDATE tbl_sanpham SET tensp='".$nameprd."', image='".$img."', gia='".$gia."', iddanhmuc='".$iddm."', sptieubieu='".$sptieubieu."', mota='".$mota."', chitiet='".$chitiet."', hienthi='".$hienthi."' WHERE id=".$id;    
         // Prepare statement
         $stmt = $conn->prepare($sql);
         // execute the query
