@@ -1,6 +1,8 @@
-body {
+* {
+    padding: 0;
     margin: 0;
-}
+    box-sizing: border-box;
+} 
 
 header {
     background-color: #ccc;
@@ -16,4 +18,70 @@ footer {
 
 .login{
     margin-left: 45%;
+}
+
+.page-format {
+    padding-left: 200px !important;
+    padding-right: 200px !important;
+}
+
+@media screen and (max-width:600px){
+    .page-format{
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+.mheader {grid-area: head;}
+
+.mmain {
+    grid-area: main;
+    display: flex;
+    justify-content: space-around;
+}
+
+.mfooter {
+    grid-area: foot;
+    text-align: center;
+}
+
+/* Home */
+.image-responsive {
+    margin-top: 10px;
+    padding: 0 6px;
+    width: 24.99999%;
+    position: relative;
+}
+
+@media only screen and (max-width: 700px) {
+    .image-responsive {
+      width: 49.99999%;
+      margin: 6px 0;
+    }
+}
+  
+@media only screen and (max-width: 500px) {
+    .image-responsive {
+      width: 100%;
+    }
+}
+
+.gallery {
+    border: 1px solid black !important;
+    border-radius: 5px;
+}
+
+.gallery:hover {
+    border: 2px solid black;
+}
+
+.gallery img {
+    width: 100%;
+    height: auto;
+}
+
+.image-description {
+    padding: 15px;
+    text-align: center;
+    position: relative;
 }

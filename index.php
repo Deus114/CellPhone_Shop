@@ -3,6 +3,7 @@
     ob_start();
     include 'Model/connectdb.php';
     include 'Model/user.php';
+    include 'Model/product.php';
 
     //Header
     include "View/header.php";
@@ -73,9 +74,11 @@
                 break;
 
             default:
+                $kq=get_sptieubieu();
                 include "View/home.php";
         }
     } else {
+        $kq=get_sptieubieu();
         include "View/home.php";
     }
 

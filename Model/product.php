@@ -44,4 +44,14 @@
         // use exec() because no results are returned
         $conn->exec($sql);
     } 
+
+    function get_sptieubieu(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE sptieubieu=1");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
 ?>
