@@ -1,7 +1,7 @@
 <?php
     //Header
     include "View/header.php";
-    
+
 
     if(isset($_GET['act'])){
         $act=$_GET['act'];
@@ -26,6 +26,7 @@
                             $_SESSION['role']=$role;
                             $_SESSION['user']=$kq[0]['user'];
                             $_SESSION['password']=$kq[0]['password'];
+                            $_SESSION['id']=$kq[0]['id'];
                             if($kq[0]['name'] == "") $_SESSION['name']=$kq[0]['user'];
                             else $_SESSION['name']=$kq[0]['name'];
                             header('location: index.php');
@@ -72,6 +73,12 @@
                 $user=$_SESSION['user'];
                 $kq=getuser($user);
                 include "View/userinfo.php";
+                break;
+
+            case 'spchitiet':
+                $id=$_GET['id'];
+                $kq=getproduct($id);
+                include "View/spchitiet.php";
                 break;
 
             default:

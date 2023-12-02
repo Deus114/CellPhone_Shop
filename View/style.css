@@ -1,16 +1,30 @@
+/* Css for View/header.php */
 .container {
     max-width: 1200px;
     width: 100%;
 }
 
+.white {
+	color: white !important;
+}
+
+.bg-red {
+	background-color: rgb(238, 9, 9) !important;
+}
+
 .tile{
-	padding-right: 20%;
+	margin-left: 5%;
+	padding-right: 15%;
 }
 
 footer {
     background-color: #ccc;
     margin-top: 50px;
     padding: 20px;
+}
+
+.sear {
+	margin-right: 5%;
 }
 
 /* Css for View/home.php */
@@ -45,4 +59,23 @@ aside h3 {
 .add {
 	text-decoration: none;
 	color: black;
+}
+
+/* Css for View/spchitiet.php */
+.buy {
+	margin-left: 30%;
+}
+
+.img-fluid{
+	width: 100%;
+}
+
+.display{
+	width: 85%;
+	margin-left: 10%;
+	margin-top: 20px !important;
+}
+
+.des {
+	width: 70%;
 }
