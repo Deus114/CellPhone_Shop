@@ -1,13 +1,10 @@
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} 
+.container {
+    max-width: 1200px;
+    width: 100%;
+}
 
-header {
-    background-color: #ccc;
-    margin-bottom: 5px;
-    padding: 20px;
+.tile{
+	padding-right: 20%;
 }
 
 footer {
@@ -16,72 +13,36 @@ footer {
     padding: 20px;
 }
 
-.login{
-    margin-left: 45%;
+/* Css for View/home.php */
+.content {
+	margin-top: 20px !important;
 }
 
-.page-format {
-    padding-left: 200px !important;
-    padding-right: 200px !important;
+aside h3 {
+	font-size: 1em;
+	background-color: #EBEBEB;
+    padding: 8px 15px;
+	text-align: center;
+	border: 1px solid #000;
+	border-radius: 10px;
 }
 
-@media screen and (max-width:600px){
-    .page-format{
-        margin-left: 50px;
-        margin-right: 50px;
-    }
+.card {
+	margin-bottom: 20px;
+	text-align: center;
+	border: none;
+	transition: all 0.5s;
 }
 
-.mheader {grid-area: head;}
-
-.mmain {
-    grid-area: main;
-    display: flex;
-    justify-content: space-around;
+.card:hover {
+	background-color: #ccc;
 }
 
-.mfooter {
-    grid-area: foot;
-    text-align: center;
+.homeprd {
+	margin-left: 5%;
 }
 
-/* Home */
-.image-responsive {
-    margin-top: 10px;
-    padding: 0 6px;
-    width: 24.99999%;
-    position: relative;
-}
-
-@media only screen and (max-width: 700px) {
-    .image-responsive {
-      width: 49.99999%;
-      margin: 6px 0;
-    }
-}
-  
-@media only screen and (max-width: 500px) {
-    .image-responsive {
-      width: 100%;
-    }
-}
-
-.gallery {
-    border: 1px solid black !important;
-    border-radius: 5px;
-}
-
-.gallery:hover {
-    border: 2px solid black;
-}
-
-.gallery img {
-    width: 100%;
-    height: auto;
-}
-
-.image-description {
-    padding: 15px;
-    text-align: center;
-    position: relative;
+.add {
+	text-decoration: none;
+	color: black;
 }

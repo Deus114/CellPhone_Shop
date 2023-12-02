@@ -1,6 +1,7 @@
 <?php
     //Header
     include "View/header.php";
+    
 
     if(isset($_GET['act'])){
         $act=$_GET['act'];
@@ -74,10 +75,12 @@
                 break;
 
             default:
+                $listdm=getall_dm();
                 $kq=get_sptieubieu();
                 include "View/home.php";
         }
     } else {
+        $listdm=getall_dm();
         $kq=get_sptieubieu();
         include "View/home.php";
     }

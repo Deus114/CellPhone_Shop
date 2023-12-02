@@ -4,6 +4,7 @@
     include 'Model/connectdb.php';
     include 'Model/user.php';
     include 'Model/product.php';
+    include 'Model/danhmuc.php';
 
     include "Controller/controller.php"
 ?>
