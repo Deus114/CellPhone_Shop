@@ -159,7 +159,20 @@
                     if(isset($_SESSION['role'])) unset($_SESSION['role']);
                     header('location: ../index.php');
                     break;
-                
+
+                // Quản lý bình luận
+                case 'binhluan':
+                    $kq=getall_bl();
+                    include "View/quanlybl.php";
+                    break;
+
+                case 'deletebl':
+                    $id=$_GET['id'];
+                    deletebl($id);
+                    $kq=getall_bl();
+                    include "View/quanlybl.php";
+                    break;
+
                 default :
                     include "View/home.php";
                     break;

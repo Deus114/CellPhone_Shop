@@ -15,4 +15,21 @@
 
         return $kq;
     }
+
+    function getall_bl(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_binhluan");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function deletebl($id) {
+        $conn=connectdb();
+        $sql = "DELETE FROM tbl_binhluan WHERE id=".$id;
+        // use exec() because no results are returned
+        $conn->exec($sql);
+    }
 ?>

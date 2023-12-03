@@ -13,6 +13,7 @@
             <a href="index.php">Trang chủ</a> |
             <a href="index.php?act=danhmucsanpham">Danh mục sản phẩm</a> |
             <a href="index.php?act=product">Sản phẩm</a> |
+            <a href="index.php?act=binhluan">Bình luận</a> |
             <a href="index.php?act=quanlitaikhoan">Quản lí tài khoản</a> |
             <a href="index.php?act=donhang">Đơn hàng</a> |
             <a href="index.php?act=thoat">Thoát</a>
