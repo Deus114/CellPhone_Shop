@@ -79,3 +79,26 @@ aside h3 {
 .des {
 	width: 70%;
 }
+
+.input {
+	width: 80% !important;
+}
+
+.binhluan {
+	width: 80%;
+	border: 1px solid;
+	border-radius: 5px;
+}
+
+.mgl {
+	margin-left: 3%;
+	padding-bottom: 15px;
+}
+
+.inbl {
+	margin-top: 10px;
+}
+
+#comment{
+	margin-bottom: 20px;
+}

@@ -76,8 +76,10 @@
                 break;
 
             case 'spchitiet':
-                $id=$_GET['id'];
-                $kq=getproduct($id);
+                $idprd=$_GET['id'];
+                $_SESSION['idprd']=$idprd;
+                $listbl=getallbl($idprd);
+                $kq=getproduct($idprd);
                 include "View/spchitiet.php";
                 break;
 

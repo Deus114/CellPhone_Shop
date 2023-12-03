@@ -8,7 +8,7 @@
 
     function getallbl($idprd) {
         $conn=connectdb();
-        $stmt = $conn->prepare("SELECT * FROM tbl_binhluan WHERE idprd=".$idprd);
+        $stmt = $conn->prepare("SELECT * FROM tbl_binhluan WHERE idprd=".$idprd." ORDER BY date DESC");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();
