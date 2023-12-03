@@ -165,7 +165,8 @@
                     $kq=getall_bl();
                     include "View/quanlybl.php";
                     break;
-
+                    
+                // Xóa bình luận
                 case 'deletebl':
                     $id=$_GET['id'];
                     deletebl($id);

@@ -23,7 +23,10 @@
                 <?php if(isset($_SESSION['role'])&&($_SESSION['role']==0)){ ?>
                     <!-- Chuyển tới trang user info -->
                     <li class="nav-item"> 
-                      <a class="nav-link white" href="index.php?act=userinfo"><?php echo $_SESSION['name'] ?></a> 
+                      <a class="nav-link white" href="index.php?act=userinfo">
+                      <img src="<?php echo $_SESSION['avatar'] ?>" alt="Logo" width="24" height="24" class="d-inline-block align-text-top">
+                      <?php echo $_SESSION['name'] ?>
+                      </a> 
                     </li>
                     <li class="nav-item"> 
                     <a class="nav-link white" href="index.php?act=thoat">Thoát</a>

@@ -26,13 +26,15 @@
         return $kq;
     }
 
-    function getuser($user) {
+    function modifyinfo($user,$name,$address,$email,$password,$img) {
         $conn=connectdb();
-        $stmt = $conn->prepare("SELECT * FROM tbl_user WHERE user='".$user."'");
+        if($img == "")
+            $sql = "UPDATE tbl_user SET name='".$name."', address='".$address."', email='".$email."', password='".$password."' WHERE user='".$user."'";
+        else 
+            $sql = "UPDATE tbl_user SET name='".$name."', address='".$address."', email='".$email."', password='".$password."', avatar='".$img."' WHERE user='".$user."'";    
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+        // execute the query
         $stmt->execute();
-        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
-        $kq=$stmt->fetchAll();
-
-        return $kq;
     }
 ?>
