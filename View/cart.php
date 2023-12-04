@@ -23,7 +23,10 @@
                         <td>'.$item[0].'</td>
                         <td><img src="'.substr($item[1],3).'" width="80px"></td>
                         <td>'.number_format($item[2]).'đ</td>
-                        <td>'.$item[3].'</td>
+                        <td><a href="index.php?act=giamsl&id='.$count.'">-</a>
+                        '.$item[3].'
+                        <a href="index.php?act=tangsl&id='.$count.'">+</a>
+                        </td>
                         <td>'.$tong.'</td>
                         <td><a href="index.php?act=delcart&id='.$count.'">Xóa</a></td>
                     </tr>

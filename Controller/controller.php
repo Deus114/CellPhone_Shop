@@ -234,6 +234,28 @@
                     include "View/cart.php";
                 }
                 break;
+            
+            // Tăng giảm số lượng 1 sản phẩm trong giỏ hàng
+            case 'giamsl':
+                if(isset($_GET['id'])){
+                    $id=$_GET['id'];
+                    $slg=$_SESSION['cart'][$id][3]-1;
+                    if($slg==0)
+                        array_splice( $_SESSION['cart'], $id, 1);
+                    else 
+                        $_SESSION['cart'][$id][3]=$slg;
+                    include "View/cart.php";
+                }
+                break;
+
+            case 'tangsl':
+                if(isset($_GET['id'])){
+                    $id=$_GET['id'];
+                    $slg=$_SESSION['cart'][$id][3]+1;
+                    $_SESSION['cart'][$id][3]=$slg;
+                    include "View/cart.php";
+                }
+                break;
 
             default:
                 $listdm=getall_dm();
