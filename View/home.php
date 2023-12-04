@@ -27,7 +27,10 @@
                               <div class="card-body">
                                 <p class="card-text">'.$sp['tensp'].'</p>
                                 <p class="card-text">Giá: '. number_format($sp['gia']).'đ</p>
-                                <button type="button" class="btn btn-primary"><a class="add" href="#">Thêm vào giỏ hàng</a></button>
+                                <form action="index.php?act=addtocart" method="post">
+                                  <input type="hidden" name="idsp" value="'.$sp['id'].'">
+                                  <input type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                                </form>
                               </div>
                           </div>';
                     $count++;

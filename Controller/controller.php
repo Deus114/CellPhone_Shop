@@ -1,7 +1,7 @@
 <?php
     //Header
     include "View/header.php";
-
+    if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
 
     if(isset($_GET['act'])){
         $act=$_GET['act'];
@@ -11,6 +11,7 @@
                 include "View/login.php";
                 break;
 
+            // Chuyển đến trang đăng nhập
             case 'dangnhap':
                 if(isset($_POST['dangnhap'])&&($_POST['dangnhap'])){
                     $user=$_POST['user'];
@@ -41,6 +42,7 @@
                 }
                 break;
             
+            // Thoát khỏi tài khoản người dùng
             case 'thoat':
                 if(isset($_SESSION['role'])) unset($_SESSION['role']);
                 if(isset($_SESSION['user'])) unset($_SESSION['user']);
@@ -50,15 +52,23 @@
                 header('location: index.php');
                 break;
 
+            // Chuyển đến trang đăng kí
             case 'signup':
                 include "View/signup.php";
                 break;
 
+            // Kiểm tra đăng kí thành công hay không    
             case 'dangki':
                 if(isset($_POST['dangki']) && ($_POST['dangki'])){
                     $user=$_POST['user'];
                     $pass=$_POST['password'];
                     $email=$_POST['email'];
+                    if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                        $err_text='Email có dạng stt@...';
+                        include "View/signup.php";
+                        break;
+                    }
+                    // Kiểm tra tên đăng nhập có tồn tại hay không
                     $kq=checkuser($user);
                     if(count($kq) == 0){
                         addnewuser($user, $pass, $email);
@@ -107,6 +117,7 @@
                     $sdt=$_POST['sdt'];
                     $address=$_POST['address'];
                     // Kiểm tra hợp lệ
+                    // Tên
                     if($name != ""){
                         $name = trim($name);
                         if(strlen($name)<2 || strlen($name)>30 || !preg_match('/^[\p{L} ]+$/u', $name)){
@@ -117,6 +128,7 @@
                             break;
                         }
                     }
+                    //Email
                     if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
                         $texterr='Email có dạng stt@...';
                         $user=$_SESSION['user'];
@@ -124,24 +136,19 @@
                         include "View/modifyinfo.php";
                         break;
                     }
+                    //Mật khẩu
                     if(strlen($password)<2 || strlen($password)>20){
-                        $texterr='Mật khâir phải có từ 2-20 ký tự';
+                        $texterr='Mật Khẩu phải có từ 2-20 ký tự';
                         $user=$_SESSION['user'];
                          $kq=checkuser($user);
                         include "View/modifyinfo.php";
                         break;
                     }
-                    if(strlen($password)<2 || strlen($password)>20){
-                        $texterr='Mật khâir phải có từ 2-20 ký tự';
-                        $user=$_SESSION['user'];
-                         $kq=checkuser($user);
-                        include "View/modifyinfo.php";
-                        break;
-                    }
-                    if($sdt != '0'){
+                    // Điện thoại
+                    if($sdt != ""){
                         // Loại bỏ khoảng trắng và các ký tự không phải số
                         $sdt = preg_replace('/[^0-9]/', '', $sdt);
-                        if (strlen($sdt) != 10 || strlen($sdt) != 11) {
+                        if (strlen($sdt) != 10 && strlen($sdt) != 11) {
                             $texterr='Số điện thoại không hợp lệ';
                             $user=$_SESSION['user'];
                             $kq=checkuser($user);
@@ -159,7 +166,7 @@
                         }
                     }
                     $user=$_SESSION['user'];
-                    modifyinfo($user,$name,$address,$email,$password,$img);
+                    modifyinfo($user,$name,$address,$email,$password,$img,$sdt);
                     $kq=checkuser($user);
                     if($kq[0]['name'] == "") $_SESSION['name']=$kq[0]['user'];
                     else $_SESSION['name']=$kq[0]['name'];
@@ -173,12 +180,59 @@
                 include "View/modifyinfo.php";
                 break;
 
+            // Chuyển tới trang chi tiết sản phẩm
             case 'spchitiet':
                 $idprd=$_GET['id'];
                 $_SESSION['idprd']=$idprd;
                 $listbl=getallbl($idprd);
                 $kq=getproduct($idprd);
                 include "View/spchitiet.php";
+                break;
+
+            // Thêm sản phẩm vào giỏ hàng
+            case 'addtocart':
+                if(isset($_POST['addcart']) && ($_POST['addcart'])){
+                    $idsp=$_POST['idsp'];
+                    $kq=getproduct($idsp);
+                    $tensp=$kq[0]['tensp'];
+                    $image=$kq[0]['image'];
+                    $gia=$kq[0]['gia'];
+                    $sl=1;
+                    $flag=0;
+                    $count=0;
+                    foreach($_SESSION['cart'] as $item){
+                        if($item[0]==$tensp){
+                            $slg=$item[3]+1;
+                            $_SESSION['cart'][$count][3]=$slg;
+                            $flag=1;
+                            break;
+                        }
+                        $count++;
+                    }
+                    if($flag==0){
+                        $item=array($tensp,$image,$gia,$sl);
+                        $_SESSION['cart'][]=$item;
+                    }
+                }
+                include "View/cart.php";
+                break;
+
+            // Chuyển tới trang giỏ hàng    
+            case 'cart':
+                include "View/cart.php";
+                break;    
+            
+            // Xóa sp hoặc toàn bộ giỏ hàng
+            case 'delcart':
+                if(isset($_GET['id'])){
+                    $id=$_GET['id'];
+                    array_splice( $_SESSION['cart'], $id, 1);
+                    include "View/cart.php";
+                }
+                else {
+                    unset($_SESSION['cart']);
+                    include "View/cart.php";
+                }
                 break;
 
             default:

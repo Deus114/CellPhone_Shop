@@ -41,6 +41,7 @@
                     <a class="nav-link white" href="index.php?act=signup">Đăng Kí</a>
                     </li>
                 <?php } ?>
+                <li class="nav-item"> <a class="nav-link white" href="index.php?act=cart">Giỏ hàng</a> </li>
               </ul>
             </div>
               <form class="form-inline my-2 my-lg-0 sear">

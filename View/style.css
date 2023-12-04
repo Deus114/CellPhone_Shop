@@ -102,3 +102,16 @@ aside h3 {
 #comment{
 	margin-bottom: 20px;
 }
+
+/* Css for View/cart.php */
+table, td, th {
+    border: 1px solid black;
+    text-align: center;
+  }
+  
+table {
+    width: 60%;
+    margin-top: 20px;
+}
+
+/* Css for userinfo */

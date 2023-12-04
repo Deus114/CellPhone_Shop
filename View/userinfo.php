@@ -2,7 +2,7 @@
     <?php
     if (isset($_SESSION['success'])) {
         // Hiển thị thông báo
-        echo "<div id='successMessage'>".$_SESSION['success'].".</div>";
+        echo "<div id='successMessage' style='color: green;'>".$_SESSION['success'].".</div>";
         unset($_SESSION['success']);
     }
     ?>
