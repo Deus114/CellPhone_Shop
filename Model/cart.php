@@ -1,7 +1,19 @@
 <?php
+    // Hàm lấy tất cả các sản phẩm trong giỏ hàng của 1 user
     function getcart($iduser) {
         $conn=connectdb();
         $stmt = $conn->prepare("SELECT * FROM tbl_cart WHERE iduser=".$iduser);
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    // Hàm để lấy 1 sản phẩm cụ thể trong giỏ hàng của user
+    function getcartbyID($id) {
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_cart WHERE id=".$id);
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();
@@ -23,5 +35,19 @@
         $stmt = $conn->prepare($sql);
         // execute the query
         $stmt->execute();
+    }
+
+    function deletecart($id) {
+        $conn=connectdb();
+        $sql = "DELETE FROM tbl_cart WHERE id=".$id;
+        // use exec() because no results are returned
+        $conn->exec($sql);
+    }
+
+    function deleteallcart($iduser) {
+        $conn=connectdb();
+        $sql = "DELETE FROM tbl_cart WHERE iduser=".$iduser;
+        // use exec() because no results are returned
+        $conn->exec($sql);
     }
 ?>

@@ -1,4 +1,10 @@
 <form action="index.php?act=modifyinfo" method="post">
+    <?php
+        if(isset($texterr)){
+            echo "<br></br>";
+            echo "<font color='red'>".$texterr."</font>";
+        }
+    ?>
     <h3>Thông tin cá nhân</h3>
     <img src="<?=$kq[0]['avatar']?>">
     <input type="file" name="img">
@@ -19,10 +25,4 @@
     <input type="text" name="address" value="<?=$kq[0]['address']?>">
     <br></br>
     <input type="submit" name="thaydoi" value="Thay đổi">
-    <?php
-        if(isset($texterr)){
-            echo "<br></br>";
-            echo "<font color='red'>".$texterr."</font>";
-        }
-    ?>
 </form>

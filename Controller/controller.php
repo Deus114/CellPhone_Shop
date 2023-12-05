@@ -121,7 +121,7 @@
                     if($name != ""){
                         $name = trim($name);
                         if(strlen($name)<2 || strlen($name)>30 || !preg_match('/^[\p{L} ]+$/u', $name)){
-                            $texterr=$name;
+                            $texterr='Tên phải từ 2-30 ký tự, không có ký tự đặc biệt hay chứ số';
                             $user=$_SESSION['user'];
                             $kq=checkuser($user);
                             include "View/modifyinfo.php";
@@ -242,11 +242,12 @@
                         }
                     }
                 }
-                include "View/cart.php";
+                header('location: index.php?act=cart');
                 break;
 
             // Chuyển tới trang giỏ hàng    
             case 'cart':
+                // Trường hợp người dùng
                 if(isset($_SESSION['user'])){
                     $user=checkuser($_SESSION['user']);
                     $kq=getcart($user[0]['id']);
@@ -256,38 +257,91 @@
             
             // Xóa sp hoặc toàn bộ giỏ hàng
             case 'delcart':
-                if(isset($_GET['id'])){
-                    $id=$_GET['id'];
-                    array_splice( $_SESSION['cart'], $id, 1);
-                    include "View/cart.php";
+                // Trường hợp người dùng
+                if(isset($_SESSION['user'])){
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        deletecart($id);
+                        $user=checkuser($_SESSION['user']);
+                        $kq=getcart($user[0]['id']);
+                        include "View/cart.php";
+                    }
+                    else {
+                        $user=checkuser($_SESSION['user']);
+                        deleteallcart($user[0]['id']);
+                        $kq=getcart($user[0]['id']);
+                        include "View/cart.php";
+                    }
                 }
+                // Trường hợp khách
                 else {
-                    unset($_SESSION['cart']);
-                    include "View/cart.php";
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        array_splice( $_SESSION['cart'], $id, 1);
+                        include "View/cart.php";
+                    }
+                    else {
+                        unset($_SESSION['cart']);
+                        include "View/cart.php";
+                    }
                 }
                 break;
             
             // Tăng giảm số lượng 1 sản phẩm trong giỏ hàng
             case 'giamsl':
-                if(isset($_GET['id'])){
-                    $id=$_GET['id'];
-                    $slg=$_SESSION['cart'][$id][3]-1;
-                    if($slg==0)
-                        array_splice( $_SESSION['cart'], $id, 1);
-                    else 
-                        $_SESSION['cart'][$id][3]=$slg;
-                    include "View/cart.php";
+                // Trường học người dùng
+                if(isset($_SESSION['user'])){
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        $cart=getcartbyID($id);
+                        $slg=$cart[0]['soluong']-1;
+                        if($slg==0)
+                            deletecart($id);
+                        else 
+                            modifysl($id,$slg);
+                        $user=checkuser($_SESSION['user']);
+                        $kq=getcart($user[0]['id']);
+                        header('location: index.php?act=cart');
+                    }
+                }
+                // Trường hợp khách
+                else {
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        $slg=$_SESSION['cart'][$id][3]-1;
+                        if($slg==0)
+                            array_splice( $_SESSION['cart'], $id, 1);
+                        else 
+                            $_SESSION['cart'][$id][3]=$slg;
+                        header('location: index.php?act=cart');
+                    }
                 }
                 break;
 
             case 'tangsl':
-                if(isset($_GET['id'])){
-                    $id=$_GET['id'];
-                    $slg=$_SESSION['cart'][$id][3]+1;
-                    $_SESSION['cart'][$id][3]=$slg;
-                    include "View/cart.php";
+                if(isset($_SESSION['user'])){
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        $cart=getcartbyID($id);
+                        $slg=$cart[0]['soluong']+1;
+                        modifysl($id,$slg);
+                        $user=checkuser($_SESSION['user']);
+                        $kq=getcart($user[0]['id']);
+                        header('location: index.php?act=cart');
+                    }
+                }
+                // Trường hợp khách
+                else {
+                    if(isset($_GET['id'])){
+                        $id=$_GET['id'];
+                        $slg=$_SESSION['cart'][$id][3]+1;
+                        $_SESSION['cart'][$id][3]=$slg;
+                        header('location: index.php?act=cart');
+                    }
                 }
                 break;
+
+            
 
             default:
                 $listdm=getall_dm();

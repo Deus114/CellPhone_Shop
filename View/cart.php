@@ -14,18 +14,23 @@
             if(isset($_SESSION['user'])){
                 if(isset($kq) && count($kq) != 0){
                     $stt=1;
+                    $tt=0;
                     foreach($kq as $sp){
                         $item=getproduct($sp['idsp']);
                         $tong=$sp['soluong']*$item[0]['gia'];
+                        $tt+=$tong;
                         echo '
                         <tr>
                             <td>'.$stt.'</td>
                             <td>'.$item[0]['tensp'].'</td>
                             <td><img src="'.substr($item[0]['image'],3).'" width="80px"></td>
                             <td>'.number_format($item[0]['gia']).'đ</td>
-                            <td>'.$sp['soluong'].'</td>
-                            <td>'.$tong.'</td>
-                            <td><a href="index.php?act=delcart">Xóa</a></td>
+                            <td><a href="index.php?act=giamsl&id='.$sp['id'].'">-</a>
+                            '.$sp['soluong'].'
+                            <a href="index.php?act=tangsl&id='.$sp['id'].'">+</a>
+                            </td>
+                            <td>'.number_format($tong).'đ</td>
+                            <td><a href="index.php?act=delcart&id='.$sp['id'].'">Xóa</a></td>
                         </tr>
                         ';
                         $stt++;
@@ -39,8 +44,10 @@
                     // Đếm số thứ tự
                     $stt=1;
                     $count=0;
+                    $tt=0;
                     foreach($_SESSION['cart'] as $item){
                         $tong=$item[2]*$item[3];
+                        $tt+=$tong;
                         echo '
                         <tr>
                             <td>'.$stt.'</td>
@@ -51,17 +58,23 @@
                             '.$item[3].'
                             <a href="index.php?act=tangsl&id='.$count.'">+</a>
                             </td>
-                            <td>'.$tong.'</td>
+                            <td>'.number_format($tong).'đ</td>
                             <td><a href="index.php?act=delcart&id='.$count.'">Xóa</a></td>
                         </tr>
                         ';
                         $stt++;
                         $count++;
                     }
-                    // Nút xóa tất cả
-                    echo '<a href="index.php?act=delcart">Xóa tất cả</a>';
                 }
             }
             
         ?>
-    </table>
+</table>
+<?php
+    if(isset($tt)){
+        echo '<p>Thành tiền: '.number_format($tt).'đ</p>';
+        // Xóa tất cả
+        echo '<a href="index.php?act=delcart">Xóa tất cả</a> | ';
+        echo '<a href="#">Đặt hàng</a>';   
+    }
+?>
