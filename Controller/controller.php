@@ -191,27 +191,55 @@
 
             // Thêm sản phẩm vào giỏ hàng
             case 'addtocart':
-                if(isset($_POST['addcart']) && ($_POST['addcart'])){
-                    $idsp=$_POST['idsp'];
-                    $kq=getproduct($idsp);
-                    $tensp=$kq[0]['tensp'];
-                    $image=$kq[0]['image'];
-                    $gia=$kq[0]['gia'];
-                    $sl=1;
-                    $flag=0;
-                    $count=0;
-                    foreach($_SESSION['cart'] as $item){
-                        if($item[0]==$tensp){
-                            $slg=$item[3]+1;
-                            $_SESSION['cart'][$count][3]=$slg;
-                            $flag=1;
-                            break;
+                // Trường hợp người dùng
+                if(isset($_SESSION['user'])){
+                    if(isset($_POST['addcart']) && ($_POST['addcart'])){
+                        $user=checkuser($_SESSION['user']);
+                        $idsp=$_POST['idsp'];
+                        $sl=1;
+                        $flag=0;
+                        $cart=getcart($user[0]['id']);
+                        if(count($cart) != 0){
+                            $count=0;
+                            foreach($cart as $item){
+                                if($item['idsp']==$idsp){
+                                    $slg=$cart[$count]['soluong']+1;
+                                    modifysl($cart[$count]['id'],$slg);
+                                    $flag=1;
+                                    break;
+                                }
+                                $count++;
+                            }
                         }
-                        $count++;
+                        if($flag==0)
+                            addcart($user[0]['id'],$idsp,$sl);
                     }
-                    if($flag==0){
-                        $item=array($tensp,$image,$gia,$sl);
-                        $_SESSION['cart'][]=$item;
+                    $kq=getcart($user[0]['id']);
+                }
+                // Trường hợp khách 
+                else {
+                    if(isset($_POST['addcart']) && ($_POST['addcart'])){
+                        $idsp=$_POST['idsp'];
+                        $kq=getproduct($idsp);
+                        $tensp=$kq[0]['tensp'];
+                        $image=$kq[0]['image'];
+                        $gia=$kq[0]['gia'];
+                        $sl=1;
+                        $flag=0;
+                        $count=0;
+                        foreach($_SESSION['cart'] as $item){
+                            if($item[0]==$tensp){
+                                $slg=$item[3]+1;
+                                $_SESSION['cart'][$count][3]=$slg;
+                                $flag=1;
+                                break;
+                            }
+                            $count++;
+                        }
+                        if($flag==0){
+                            $item=array($tensp,$image,$gia,$sl);
+                            $_SESSION['cart'][]=$item;
+                        }
                     }
                 }
                 include "View/cart.php";
@@ -219,6 +247,10 @@
 
             // Chuyển tới trang giỏ hàng    
             case 'cart':
+                if(isset($_SESSION['user'])){
+                    $user=checkuser($_SESSION['user']);
+                    $kq=getcart($user[0]['id']);
+                }
                 include "View/cart.php";
                 break;    
             

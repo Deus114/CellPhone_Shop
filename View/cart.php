@@ -10,32 +10,58 @@
             <th>Xóa</th>
         </tr>
         <?php
-            // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
-            if(isset($_SESSION['cart']) && (count($_SESSION['cart']))>0){
-                // Đếm số thứ tự
-                $stt=1;
-                $count=0;
-                foreach($_SESSION['cart'] as $item){
-                    $tong=$item[2]*$item[3];
-                    echo '
-                    <tr>
-                        <td>'.$stt.'</td>
-                        <td>'.$item[0].'</td>
-                        <td><img src="'.substr($item[1],3).'" width="80px"></td>
-                        <td>'.number_format($item[2]).'đ</td>
-                        <td><a href="index.php?act=giamsl&id='.$count.'">-</a>
-                        '.$item[3].'
-                        <a href="index.php?act=tangsl&id='.$count.'">+</a>
-                        </td>
-                        <td>'.$tong.'</td>
-                        <td><a href="index.php?act=delcart&id='.$count.'">Xóa</a></td>
-                    </tr>
-                    ';
-                    $stt++;
-                    $count++;
+            // Trường hợp user
+            if(isset($_SESSION['user'])){
+                if(isset($kq) && count($kq) != 0){
+                    $stt=1;
+                    foreach($kq as $sp){
+                        $item=getproduct($sp['idsp']);
+                        $tong=$sp['soluong']*$item[0]['gia'];
+                        echo '
+                        <tr>
+                            <td>'.$stt.'</td>
+                            <td>'.$item[0]['tensp'].'</td>
+                            <td><img src="'.substr($item[0]['image'],3).'" width="80px"></td>
+                            <td>'.number_format($item[0]['gia']).'đ</td>
+                            <td>'.$sp['soluong'].'</td>
+                            <td>'.$tong.'</td>
+                            <td><a href="index.php?act=delcart">Xóa</a></td>
+                        </tr>
+                        ';
+                        $stt++;
+                    }
                 }
-                // Nút xóa tất cả
-                echo '<a href="index.php?act=delcart">Xóa tất cả</a>';
             }
+            // Trường hợp khách
+            else {
+                // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
+                if(isset($_SESSION['cart']) && (count($_SESSION['cart']))>0){
+                    // Đếm số thứ tự
+                    $stt=1;
+                    $count=0;
+                    foreach($_SESSION['cart'] as $item){
+                        $tong=$item[2]*$item[3];
+                        echo '
+                        <tr>
+                            <td>'.$stt.'</td>
+                            <td>'.$item[0].'</td>
+                            <td><img src="'.substr($item[1],3).'" width="80px"></td>
+                            <td>'.number_format($item[2]).'đ</td>
+                            <td><a href="index.php?act=giamsl&id='.$count.'">-</a>
+                            '.$item[3].'
+                            <a href="index.php?act=tangsl&id='.$count.'">+</a>
+                            </td>
+                            <td>'.$tong.'</td>
+                            <td><a href="index.php?act=delcart&id='.$count.'">Xóa</a></td>
+                        </tr>
+                        ';
+                        $stt++;
+                        $count++;
+                    }
+                    // Nút xóa tất cả
+                    echo '<a href="index.php?act=delcart">Xóa tất cả</a>';
+                }
+            }
+            
         ?>
     </table>
