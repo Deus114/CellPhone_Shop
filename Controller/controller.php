@@ -1,6 +1,7 @@
 <?php
     //Header
     include "View/header.php";
+
     if(!isset($_SESSION['cart'])) $_SESSION['cart']=[];
 
     if(isset($_GET['act'])){
@@ -156,6 +157,7 @@
                             break;
                         }
                     }
+                    // Địa chỉ
                     if($address != ""){
                         if(strlen($address)<2 || strlen($address)>30){
                             $texterr='Địa chỉ nhà không hợp lệ';
@@ -239,6 +241,7 @@
                         if($flag==0){
                             $item=array($tensp,$image,$gia,$sl);
                             $_SESSION['cart'][]=$item;
+
                         }
                     }
                 }
@@ -259,6 +262,7 @@
             case 'delcart':
                 // Trường hợp người dùng
                 if(isset($_SESSION['user'])){
+                    // Xóa 1 item trong giỏ hàng
                     if(isset($_GET['id'])){
                         $id=$_GET['id'];
                         deletecart($id);
@@ -266,6 +270,7 @@
                         $kq=getcart($user[0]['id']);
                         include "View/cart.php";
                     }
+                    // Xóa tất cả
                     else {
                         $user=checkuser($_SESSION['user']);
                         deleteallcart($user[0]['id']);
@@ -275,11 +280,13 @@
                 }
                 // Trường hợp khách
                 else {
+                    // Xóa 1 item trong giỏ hàng
                     if(isset($_GET['id'])){
                         $id=$_GET['id'];
                         array_splice( $_SESSION['cart'], $id, 1);
                         include "View/cart.php";
                     }
+                    // Xóa tất cả
                     else {
                         unset($_SESSION['cart']);
                         include "View/cart.php";
@@ -319,6 +326,7 @@
                 break;
 
             case 'tangsl':
+                // Trường hợp người dùng
                 if(isset($_SESSION['user'])){
                     if(isset($_GET['id'])){
                         $id=$_GET['id'];
@@ -341,7 +349,115 @@
                 }
                 break;
 
-            
+            // Chuyển qua trang đặt hàng
+            case 'dathang':
+                // Trường hợp người dùng
+                if(isset($_SESSION['user'])){
+                    $user=checkuser($_SESSION['user']);
+                    $cart=getcart($user[0]['id']);
+                    $tt=0;
+                    $count=0;
+                    $noidung="";
+                    foreach($cart as $item){
+                        $sp=getproduct($item['idsp']);
+                        $tt+=$item['soluong']*$sp[0]['gia'];
+                        if($count != 0)
+                            $noidung.=", ";
+                        $noidung.=$sp[0]['tensp'];
+                        $noidung.=" * ";
+                        $noidung.=$item['soluong'];
+                        $count++;
+                    }
+                    include "View/thanhtoan.php";
+                }
+                // Trường hợp khách
+                else {
+                    $tt=0;
+                    $noidung="";
+                    $count=0;
+                    foreach($_SESSION['cart'] as $item){
+                        $tt+=$item[3]*$item[2];
+                        if($count != 0)
+                            $noidung.=", ";
+                        $noidung.=$item[0];
+                        $noidung.=" * ";
+                        $noidung.=$item[3];
+                        $count++;
+                    }
+                    include "View/thanhtoan.php";
+                }
+                break;
+
+            // Chuyển đến trang thanh toán
+            case 'xacnhan':
+                if(isset($_POST['iduser']))
+                    $iduser=$_POST['iduser'];
+                else 
+                    $iduser=0;
+                $pttt=$_POST['pttt'];
+                $noidung=$_POST['noidung'];
+                $thanhtien=$_POST['thanhtien'];
+                $name=$_POST['hovaten'];
+                $email=$_POST['email'];
+                $sdt=$_POST['sdt'];
+                $address=$_POST['address'];
+                $madonhang="SP";
+                date_default_timezone_set('Asia/Ho_Chi_Minh');
+                $date=date('h:ia d/m/Y');
+                // Kiểm tra hợp lệ
+                // Tên
+                $name = trim($name);
+                if(strlen($name)<2 || strlen($name)>30 || !preg_match('/^[\p{L} ]+$/u', $name)){
+                    $_SESSION['texterr']='Tên phải từ 2-30 ký tự, không có ký tự đặc biệt hay chứ số';
+                    $user=$_SESSION['user'];
+                    $kq=checkuser($user);
+                    header('location: index.php?act=dathang');
+                    break;
+                }
+                
+                //Email
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $_SESSION['texterr']='Email có dạng stt@...';
+                    $user=$_SESSION['user'];
+                    $kq=checkuser($user);
+                    header('location: index.php?act=dathang');
+                    break;
+                }
+                // Điện thoại
+                // Loại bỏ khoảng trắng và các ký tự không phải số
+                $sdt = preg_replace('/[^0-9]/', '', $sdt);
+                if (strlen($sdt) != 10 && strlen($sdt) != 11) {
+                    $_SESSION['texterr']='Số điện thoại không hợp lệ';
+                    $user=$_SESSION['user'];
+                    $kq=checkuser($user);
+                    header('location: index.php?act=dathang');
+                   break;
+                }
+                // Địa chỉ
+                if(strlen($address)<2 || strlen($address)>30){
+                    $_SESSION['texterr']='Địa chỉ nhà không hợp lệ';
+                    $user=$_SESSION['user'];
+                    $kq=checkuser($user);
+                    header('location: index.php?act=dathang');
+                    break;
+                }
+                unset($_SESSION['texterr']);
+                addnewdh($madonhang, $noidung, $thanhtien, $iduser, $name, $sdt, $email, $address, $pttt, $date);
+                // Trường hợp người dùng
+                if(isset($_SESSION['user'])){
+                    $user=checkuser($_SESSION['user']);
+                    deleteallcart($user[0]['id']);
+                }
+                // Trường hợp khách
+                else {
+                    unset($_SESSION['cart']);
+                }
+                if(isset($_SESSION['user']))
+                    $_SESSION['success']='Bạn đã đặt hàng thành công';
+                else    
+                    $_SESSION['success']='Bạn đã đặt hàng thành công bạn sẽ nhận được email và cuộc gọi xác nhận';
+                header('location: index.php?act=cart');
+                break;
 
             default:
                 $listdm=getall_dm();

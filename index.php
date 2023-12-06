@@ -7,6 +7,7 @@
     include 'Model/danhmuc.php';
     include "Model/binhluan.php";
     include "Model/cart.php";
+    include "Model/donhang.php";
 
     include "Controller/controller.php"
 ?>

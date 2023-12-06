@@ -17,8 +17,8 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav mr-auto">
                 <li class="nav-item active"> <a class="nav-link white" href="index.php">Trang chủ</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">Liên hệ</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">Giới thiệu</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="#info">Liên hệ</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#">Sản phẩm</a> </li>
                 <?php if(isset($_SESSION['role'])&&($_SESSION['role']==0)){ ?>
                     <!-- Chuyển tới trang user info -->

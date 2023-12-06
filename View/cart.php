@@ -1,3 +1,21 @@
+<?php
+    if (isset($_SESSION['success'])) {
+        // Hiển thị thông báo
+        echo "<div id='successMessage' style='color: green;'>".$_SESSION['success'].".</div>";
+        unset($_SESSION['success']);
+    }
+?>
+<!-- Mã JavaScript để ẩn thông báo sau 4 giây -->
+<script>
+    setTimeout(function() {
+        var successMessage = document.getElementById('successMessage');
+        if (successMessage) {
+            successMessage.style.display = 'none';
+        }
+    }, 4000);
+</script>
+
+<!-- Giỏ hàng bắt đầu từ đây -->
 <h2>Giỏ hàng</h2>
 <table>
         <tr>
@@ -75,6 +93,6 @@
         echo '<p>Thành tiền: '.number_format($tt).'đ</p>';
         // Xóa tất cả
         echo '<a href="index.php?act=delcart">Xóa tất cả</a> | ';
-        echo '<a href="#">Đặt hàng</a>';   
+        echo '<a href="index.php?act=dathang">Đặt hàng</a>';   
     }
 ?>

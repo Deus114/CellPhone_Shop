@@ -14,7 +14,7 @@
 
 .tile{
 	margin-left: 5%;
-	padding-right: 10%;
+	padding-right: 5%;
 }
 
 footer {
@@ -114,4 +114,35 @@ table {
     margin-top: 20px;
 }
 
-/* Css for userinfo */
+/* Css for View/userinfo.php */
+.mmain-user-info {
+	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+	max-width: 50%;
+	margin: auto;
+	text-align: center;
+	font-family: arial;
+	padding: 10px;
+}
+
+/* footer */
+.fcontainer {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	padding: 15px;
+	background-color: #333;
+	color: white;
+}
+
+.fcolumn {
+	flex: 1;
+	margin-right: 20px;
+}
+
+
+footer {
+	text-align: center;
+	padding: 10px;
+	background-color: #222;
+	color: white;
+}

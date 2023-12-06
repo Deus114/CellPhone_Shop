@@ -1,5 +1,16 @@
-    <div class="mfooter">
-        <footer>Footer</footer>
+    <div class="mfooter" id="info">
+        <footer>
+            <div class="fcontainer">
+                <div class="fcolumn">
+                    <h3>Giới thiệu</h3>
+                    <p>Đây là phần giới thiệu về chúng tôi...</p>
+                </div>
+                <div class="fcolumn">
+                    <h3>Liên hệ</h3>
+                    <p>Thông tin liên hệ của chúng tôi...</p>
+                </div>
+            </div>
+        </footer>
     </div>
 </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
