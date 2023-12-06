@@ -64,4 +64,14 @@
 
         return $kq;
     }
+
+    function getprdbyIddm($iddm) {
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE iddanhmuc=".$iddm);
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
 ?>

@@ -468,7 +468,17 @@
 
             // Chuyển tới trang sản phẩm
             case 'sanpham':
-                $kq=getallsp();
+                if(isset($_GET['id'])){
+                    $iddm=$_GET['id'];
+                    $dm=getdm($iddm);
+                    $tendm=$dm[0]['tendanhmuc'];
+                    $listdm=getall_dm();
+                    $kq=getprdbyIddm($iddm);
+                }
+                else{
+                   $kq=getallsp(); 
+                   $listdm=getall_dm();
+                } 
                 include "View/sanpham.php";
                 break;
 

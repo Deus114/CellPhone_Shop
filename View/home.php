@@ -5,7 +5,7 @@
                 <ul class="list-group">
                   <?php
                     foreach($listdm as $dm){
-                      echo '<li class="list-group-item"><a href="#" class="text-decoration-none">'.$dm['tendanhmuc'].'</a></li>';
+                      echo '<li class="list-group-item"><a href="index.php?act=sanpham&id='.$dm['id'].'" class="text-decoration-none">'.$dm['tendanhmuc'].'</a></li>';
                     }
                   ?>
                 </ul>
@@ -29,7 +29,7 @@
                                 <p class="card-text">Giá: '. number_format($sp['gia']).'đ</p>
                                 <form action="index.php?act=addtocart" method="post">
                                   <input type="hidden" name="idsp" value="'.$sp['id'].'">
-                                  <input type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                                  <input class="btn btn-primary" type="submit" name="addcart" value="Thêm vào giỏ hàng">
                                 </form>
                               </div>
                           </div>';

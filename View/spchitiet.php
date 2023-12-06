@@ -14,7 +14,10 @@
                 <br>
                 <h4>Mô tả:</h4>
                 <p><?php echo $kq[0]['mota']; ?></p>
-                <button type="button" class="btn btn-primary buy"><a class="add" href="#">Thêm vào giỏ hàng</a></button>
+                <form action="index.php?act=addtocart" method="post">
+                    <input type="hidden" name="idsp" value="<?php echo $kq[0]['id']; ?>">
+                    <input class=" buy btn btn-primary" type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                </form>
             </div>
         </div>
         <div class="col-12" style="margin-top: 25px;">
