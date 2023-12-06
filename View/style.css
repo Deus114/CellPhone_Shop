@@ -146,3 +146,10 @@ footer {
 	background-color: #222;
 	color: white;
 }
+
+/* Css for View/sanpham.php */
+.showsanpham {
+	margin-top: 20px;
+	margin-left: 15%;
+	width: 70%;
+}

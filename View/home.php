@@ -35,7 +35,7 @@
                           </div>';
                     $count++;
                   }
-                  if($count != 1) echo '</div>';
+                  echo '</div>';
                 ?>
             </div>
         </div>

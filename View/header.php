@@ -20,7 +20,7 @@
                 <li class="nav-item"> <a class="nav-link white" href="#info">Liên hệ</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#">Tin tức</a> </li>
-                <li class="nav-item"> <a class="nav-link white" href="#">Sản phẩm</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="index.php?act=sanpham">Sản phẩm</a> </li>
                 <?php if(isset($_SESSION['role'])&&($_SESSION['role']==0)){ ?>
                     <!-- Chuyển tới trang user info -->
                     <li class="nav-item"> 

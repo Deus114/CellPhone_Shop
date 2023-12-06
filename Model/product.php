@@ -1,7 +1,7 @@
 <?php
     function getall_prd(){
         $conn=connectdb();
-        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham");
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY id DESC ");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();
@@ -48,6 +48,16 @@
     function get_sptieubieu(){
         $conn=connectdb();
         $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE sptieubieu=1");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function getallsp(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE hienthi=1 ORDER BY buy DESC");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();
