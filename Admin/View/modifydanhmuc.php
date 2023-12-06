@@ -1,4 +1,4 @@
-<div class="danhmucsanpham">
+
     <h2>CẬP NHẬT DANH MỤC SẢN PHẨM</h2>
     
     <!-- form để thêm mới sản phẩm -->
@@ -47,4 +47,3 @@
             }
         ?>
     </table>
-</div>

@@ -1,4 +1,4 @@
-<div class="danhmucsanpham">
+
     <h2>Bình luận</h2>
     <!-- Bảng danh mục các sản phẩm -->
     <table>
@@ -29,4 +29,3 @@
             }
         ?>
     </table>
-</div>

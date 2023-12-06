@@ -1,4 +1,4 @@
-<div class="danhmucsanpham">
+
     <h2>SẢN PHẨM</h2>
 
     <!-- form để thêm mới sản phẩm -->
@@ -67,4 +67,3 @@
             }
         ?>
     </table>
-</div>

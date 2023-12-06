@@ -95,7 +95,19 @@
                     break;
 
                 case 'modifyuser':
-                    
+                    $id=$_GET['id'];
+                    $kq=getkuser($id);
+                    include 'View/modifyuser.php';
+                    break;
+
+                case 'updateuser':
+                    $id=$_POST['id'];
+                    $role=$_POST['role'];
+                    $banchat=$_POST['banchat'];
+                    $banbuy=$_POST['banbuy'];
+                    modifyuser($id,$role,$banbuy,$banchat);
+                    $kq=getall_user();
+                    include "View/quanlytk.php";
                     break;
                     
                 case 'donhang':

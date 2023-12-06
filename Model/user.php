@@ -54,4 +54,24 @@
         // use exec() because no results are returned
         $conn->exec($sql);
     } 
+
+    function getkuser($id) {
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_user WHERE id='".$id."'");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function modifyuser($id,$role,$banbuy,$banchat) {
+        $conn=connectdb(); 
+        $sql = "UPDATE tbl_user SET role='".$role."', banchat='".$banchat."', banbuy='".$banbuy."' WHERE id='".$id."'";    
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+        // execute the query
+        $stmt->execute();
+    }
 ?>
+

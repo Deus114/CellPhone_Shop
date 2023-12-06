@@ -1,4 +1,4 @@
-<div class="danhmucsanpham">
+
     <h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>
 
     <!-- form để thêm mới sản phẩm -->
@@ -104,4 +104,3 @@
             }
         ?>
     </table>
-</div>
