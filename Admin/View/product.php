@@ -37,6 +37,8 @@
             <th>Mô tả</th>
             <th>Chi tiết</th>
             <th>Hiển thị</th>
+            <th>Lượt xem</th>
+            <th>Lượt mua</th>
             <th>Hành động</th>
         </tr>
         <?php
@@ -55,6 +57,8 @@
                         <td>'.$item['mota'].'</td>
                         <td>'.$item['chitiet'].'</td>
                         <td>'.$item['hienthi'].'</td>
+                        <td>'.$item['watch'].'</td>
+                        <td>'.$item['buy'].'</td>
                         <td><a href="index.php?act=updateprd&id='.$item['id'].'">Sửa</a> | <a href="index.php?act=deleteprd&id='.$item['id'].'">Xóa</a></td>
                     </tr>
                     ';

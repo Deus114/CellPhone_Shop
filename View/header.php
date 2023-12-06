@@ -19,6 +19,7 @@
                 <li class="nav-item active"> <a class="nav-link white" href="index.php">Trang chủ</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#info">Liên hệ</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#info">Giới thiệu</a> </li>
+                <li class="nav-item"> <a class="nav-link white" href="#">Tin tức</a> </li>
                 <li class="nav-item"> <a class="nav-link white" href="#">Sản phẩm</a> </li>
                 <?php if(isset($_SESSION['role'])&&($_SESSION['role']==0)){ ?>
                     <!-- Chuyển tới trang user info -->
@@ -41,7 +42,7 @@
                     <a class="nav-link white" href="index.php?act=signup">Đăng Kí</a>
                     </li>
                 <?php } ?>
-                <li class="nav-item"> <a class="nav-link white" href="index.php?act=cart">Giỏ hàng</a> </li>
+                <li class="nav-item"><a class="nav-link white" href="index.php?act=cart">Giỏ hàng</a> </li>
               </ul>
             </div>
               <form class="form-inline my-2 my-lg-0 sear">

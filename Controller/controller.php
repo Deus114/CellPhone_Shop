@@ -459,6 +459,12 @@
                 header('location: index.php?act=cart');
                 break;
 
+            case 'donhang':
+                $user=checkuser($_SESSION['user']);
+                $kq=getdhbyIDuser($user[0]['id']);
+                include "View/donhang.php";
+                break;
+
             default:
                 $listdm=getall_dm();
                 $kq=get_sptieubieu();

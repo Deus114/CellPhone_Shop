@@ -37,4 +37,21 @@
         // execute the query
         $stmt->execute();
     }
+
+    function getall_user(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_user");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function deleteuser($id) {
+        $conn=connectdb();
+        $sql = "DELETE FROM tbl_user WHERE id=".$id;
+        // use exec() because no results are returned
+        $conn->exec($sql);
+    } 
 ?>

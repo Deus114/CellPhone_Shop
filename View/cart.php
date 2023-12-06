@@ -17,6 +17,11 @@
 
 <!-- Giỏ hàng bắt đầu từ đây -->
 <h2>Giỏ hàng</h2>
+<?php
+    if(isset($_SESSION['user'])){
+        echo '<a href="index.php?act=donhang">Lịch sử mua hàng</a>';
+    }
+?>
 <table>
         <tr>
             <th>STT</th>

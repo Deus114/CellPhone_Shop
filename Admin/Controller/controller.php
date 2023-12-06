@@ -83,11 +83,31 @@
                     break;
 
                 case 'quanlitaikhoan':
-                    include "View/user.php";
+                    $kq=getall_user();
+                    include "View/quanlytk.php";
+                    break;
+
+                case 'deleteuser':
+                    $id=$_GET['id'];
+                    deleteuser($id);
+                    $kq=getall_user();
+                    include "View/quanlytk.php";
+                    break;
+
+                case 'modifyuser':
+                    
                     break;
                     
                 case 'donhang':
-                    include "View/donhang.php";
+                    $kq=getall_dh();
+                    include "View/quanlydh.php";
+                    break;
+
+                case 'deletedh':
+                    $id=$_GET['id'];
+                    deletedh($id);
+                    $kq=getall_dh();
+                    include "View/quanlydh.php";
                     break;
 
                 case 'product':

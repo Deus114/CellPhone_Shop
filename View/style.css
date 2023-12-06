@@ -104,13 +104,13 @@ aside h3 {
 }
 
 /* Css for View/cart.php */
-table, td, th {
+table, td, th, tr {
     border: 1px solid black;
     text-align: center;
   }
   
 table {
-    width: 60%;
+    width: 80%;
     margin-top: 20px;
 }
 
