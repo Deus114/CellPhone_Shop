@@ -1,6 +1,6 @@
 <!-- Giỏ hàng bắt đầu từ đây -->
 <h2>Quản lí tài khoản</h2>
-<table>
+<table id="accounts"  class="table table-striped" style="width:100%">
         <tr>
             <th>STT</th>
             <th>Họ và tên</th>
@@ -30,7 +30,10 @@
                         <td>'.$item['role'].'</td>
                         <td>'.$item['banchat'].'</td>
                         <td>'.$item['banbuy'].'</td>
-                        <td><a href="index.php?act=modifyuser&id='.$item['id'].'">Sửa</a> | <a href="index.php?act=deleteuser&id='.$item['id'].'">Xóa</a></td>
+                        <td>
+                            <a href="index.php?act=modifyuser&id='.$item['id'].'"> <button class="btn btn-success">Update</button> </a>
+                            <a href="index.php?act=deleteuser&id='.$item['id'].'"> <button class="btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                     ';
                     $stt++;

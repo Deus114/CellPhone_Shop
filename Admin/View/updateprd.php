@@ -1,10 +1,9 @@
-
-    <h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>
-
+    <div class="text-center">
+        <h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>   
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=updateproduct" method="post" enctype="multipart/form-data">
         <!-- Chọn danh mục để thêm vào -->
-        <p>Danh mục: </p>
+        <label for="iddm"> Danh mục </label>
         <select name="iddm">
             <option value="0">--Chọn danh mục--</option>
             <?php
@@ -20,9 +19,9 @@
                 }
             ?>
         </select>
-        <p>Tên sản phẩm: </p>
+        <label for="nameprd"> Tên sản phẩm: </label>
         <input type="text" name="nameprd" id="" value="<?=$iddmcur=$prd[0]['tensp']?>">
-        <p>Hình ảnh: </p>
+        <label for="img"> Hình ảnh: </label>
         <img src="<?=$iddmcur=$prd[0]['image']?>" width=80 alt="">
         <input type="file" name="img" id="">
         <?php
@@ -30,9 +29,10 @@
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             }
         ?>
-        <p>Giá: </p>
+        <br></br>
+        <label for="gia" style="margin-left:-8%"> Giá: </label>
         <input type="text" name="gia" id="" value="<?=$iddmcur=$prd[0]['gia']?>">
-        <p>Tiêu biểu: </p>
+        <label for="sptieubieu"> Tiêu biểu: </label>
         <select name="sptieubieu">
             <?php
                 $sptieubieucurr=$prd[0]['sptieubieu'];
@@ -46,12 +46,7 @@
                 }
             ?>
         </select>
-        <p>Mô tả: </p>
-        <input type="text" name="mota" id="" value="<?=$iddmcur=$prd[0]['mota']?>">
-        <p>Chi tiết: </p>
-        <input type="text" name="chitiet" id="" value="<?=$iddmcur=$prd[0]['chitiet']?>">
-        <input type="hidden" name="id" value="<?=$iddmcur=$prd[0]['id']?>">
-        <p>Hiển thị: </p>
+        <label for="hienthi"> Hiển thị: </label>
         <select name="hienthi">
             <?php
                 $hienthicurr=$prd[0]['hienthi'];
@@ -63,12 +58,17 @@
                     echo '<option value="1" selected>1</option>';
                 }
             ?>
-        </select>
+        </select> <br></br>
+        <label for="mota"> Mô tả: </label>
+        <textarea name="mota" cols="60" rows="5"><?=$iddmcur=$prd[0]['mota']?></textarea>
+        <label for="chitiet"> Chi tiết: </label>
+        <textarea name="chitiet" cols="60" rows="5"><?=$iddmcur=$prd[0]['chitiet']?></textarea>
+        <input type="hidden" name="id" value="<?=$iddmcur=$prd[0]['id']?>">
         <input type="submit" name="update" value="Cập nhật">
     </form>
-
+    </div>
     <!-- Bảng danh mục các sản phẩm -->
-    <table>
+    <table id="products"  class="table table-striped" style="width:100%">
         <tr>
             <th>STT</th>
             <th>Tên sản phẩm</th>
@@ -96,7 +96,10 @@
                         <td>'.$item['mota'].'</td>
                         <td>'.$item['chitiet'].'</td>
                         <td>'.$item['hienthi'].'</td>
-                        <td><a href="index.php?act=updateprd&id='.$item['id'].'">Sửa</a> | <a href="index.php?act=deleteprd&id='.$item['id'].'">Xóa</a></td>
+                        <td>
+                            <a href="index.php?act=updateprd&id='.$item['id'].'"> <button class="btn btn-success">Update</button> </a> 
+                            <a href="index.php?act=deleteprd&id='.$item['id'].'"><button class="btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                     ';
                     $stt++;

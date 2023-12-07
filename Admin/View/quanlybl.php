@@ -1,7 +1,9 @@
-
-    <h2>Bình luận</h2>
+<div class="text-center">
+        <h2>Bình luận</h2>
+    </div>
+    
     <!-- Bảng danh mục các sản phẩm -->
-    <table>
+    <table id="comments"  class="table table-striped" style="width:100%">
         <tr>
             <th>STT</th>
             <th>User</th>
@@ -21,7 +23,11 @@
                         <td>'.$item['user'].'</td>
                         <td>'.$item['noidung'].'</td>
                         <td>'.$item['date'].'</td>
-                        <td><a href="index.php?act=deletebl&id='.$item['id'].'">Xóa</a></td>
+                        <td>
+                        <a href="index.php?act=deletebl&id='.$item['id'].'">
+                            <button class="btn btn-danger">Delete</button>
+                        </a>
+                        </td>
                     </tr>
                     ';
                     $stt++;

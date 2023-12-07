@@ -1,5 +1,7 @@
-
-    <h2>SẢN PHẨM</h2>
+    <div class="text-center">
+         <h2>SẢN PHẨM</h2>
+    </div>
+   
 
     <!-- form để thêm mới sản phẩm -->
     <form action="index.php?act=addprd" method="post" enctype="multipart/form-data">
@@ -15,19 +17,22 @@
                 }
             ?>
         </select>
+        <label for="nameprd"> Tên sản phẩm: </label>
         <input type="text" name="nameprd" id="">
+        <label for="img"> Chọn hình ảnh: </label>
         <input type="file" name="img" id="">
         <?php
             if(isset($uploadOk)&&($uploadOk == 0)){
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             }
         ?>
+        <label for="gia" style="margin-left:-8%"> Giá: </label>
         <input type="text" name="gia" id="">
         <input type="submit" name="addnewprd" value="Thêm mới">
     </form>
 
     <!-- Bảng danh mục các sản phẩm -->
-    <table>
+    <table id="products" class="table table-striped" style="width:100%">
         <tr>
             <th>STT</th>
             <th>Tên sản phẩm</th>
@@ -59,7 +64,10 @@
                         <td>'.$item['hienthi'].'</td>
                         <td>'.$item['watch'].'</td>
                         <td>'.$item['buy'].'</td>
-                        <td><a href="index.php?act=updateprd&id='.$item['id'].'">Sửa</a> | <a href="index.php?act=deleteprd&id='.$item['id'].'">Xóa</a></td>
+                        <td>
+                            <a href="index.php?act=updateprd&id='.$item['id'].'"><button class="btn btn-success">Update</button> </a> 
+                            <a href="index.php?act=deleteprd&id='.$item['id'].'"><button class="btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                     ';
                     $stt++;
