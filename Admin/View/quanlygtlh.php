@@ -1,5 +1,5 @@
     <div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
-        <h2>Quản lí thông tin hiển thị ở footer</h2>
+        <h2>Quản lí thông tin hiển thị ở Footer và tin tức</h2>
     </div>
     <!-- form để sửa đổi phần giới thiệu liên hện -->
     <div class="bg-light  border rounded-3 p-1 p-sm-3 m-2 m-sm-4">

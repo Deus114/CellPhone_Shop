@@ -24,7 +24,8 @@
         <input type="file" name="img" id="">
         <?php
             if(isset($uploadOk)&&($uploadOk == 0)){
-                echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+                echo "<br>";
+                echo "<font color='red'>Sorry, only JPG, JPEG, PNG & GIF files are allowed.</font>";
             }
         ?>
         <br></br>

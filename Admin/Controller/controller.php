@@ -226,6 +226,7 @@
                         $kq=getall_hp();
                     else    
                         $kq=getall_lp();
+                    $listdm=getall_dm();
                     include "View/product.php";
                     break;
 
@@ -234,6 +235,7 @@
                         $kq=getall_hw();
                     else    
                         $kq=getall_lw();
+                    $listdm=getall_dm();
                     include "View/product.php";
                     break;
 
@@ -242,6 +244,7 @@
                         $kq=getallsp();
                     else    
                         $kq=getall_lb();
+                    $listdm=getall_dm();
                     include "View/product.php";
                     break;
 

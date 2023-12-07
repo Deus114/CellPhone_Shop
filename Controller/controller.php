@@ -106,7 +106,9 @@
                         // Allow certain file formats
                         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                             && $imageFileType != "gif" ) {
-                            $uploadOk = 0;
+                            $texterr='Chỉ nhận file dạng JPG, JPEG, PNG & GIF.';
+                            $user=$_SESSION['user'];
+                            $kq=checkuser($user);
                             include "View/modifyinfo.php";
                             break;
                         }

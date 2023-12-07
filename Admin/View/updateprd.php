@@ -1,8 +1,6 @@
 <div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
         <h2>CHỈNH SỬA THÔNG TIN SẢN PHẨM</h2>   
     </div>
-   
-
     <!-- form để thêm mới sản phẩm -->
     <div class="bg-light border rounded-3 p-1 p-sm-3 ">
         <form action="index.php?act=updateproduct" method="post" enctype="multipart/form-data">
@@ -10,7 +8,6 @@
             <div class="input-group mb-2">
                 <label for="iddm" class="input-group-text bg-light"> Danh mục </label>
                 <select name="iddm" class="form-select">
-                    <option value="0">--Chọn danh mục--</option>
                     <?php
                         $iddmcur=$prd[0]['iddanhmuc'];
                         // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
@@ -51,7 +48,6 @@
             <div class="input-group mb-2">
                 <label for="sptieubieu" class="input-group-text bg-light"> Sản phẩm tiêu biểu </label>
                 <select name="sptieubieu" class="form-select">
-                    <option value="selected">List</option>
                     <?php
                         $sptieubieucurr=$prd[0]['sptieubieu'];
                         // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
