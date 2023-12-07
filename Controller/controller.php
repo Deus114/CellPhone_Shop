@@ -492,6 +492,14 @@
                 include "View/sanpham.php";
                 break;
 
+            case 'sort':
+                $id=$_GET['id'];
+                if($id==1) $kq=getall_hp(); // Sort high
+                else $kq=getall_lp();       // Sort low
+                $listdm=getall_dm();
+                include "View/sanpham.php";
+                break;
+
             default:
                 $listdm=getall_dm();
                 $kq=get_sptieubieu();

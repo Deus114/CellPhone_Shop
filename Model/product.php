@@ -92,4 +92,24 @@
         // execute the query
         $stmt->execute();
     }
+
+    function getall_hp(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY gia DESC ");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function getall_lp(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY gia ASC ");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
 ?>

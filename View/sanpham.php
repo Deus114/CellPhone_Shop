@@ -19,7 +19,18 @@
                     ?>
                     <li class="dropdown-item"><a class="text-decoration-none" href="index.php?act=sanpham">Tất cả</a></li>
                 </ul>
+            </div>
         </div>
+        <div class="col">
+        <div class="dropdown">
+                <a class="btn dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                    Sắp xếp theo giá
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <li class="dropdown-item"><a class="text-decoration-none" href="index.php?act=sort&id=1">Giảm dần</a></li>
+                    <li class="dropdown-item"><a class="text-decoration-none" href="index.php?act=sort&id=2">Tăng dần</a></li>
+                </ul>
+            </div>
         </div>
     </div>
     
