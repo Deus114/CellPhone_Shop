@@ -494,5 +494,6 @@
     }
 
     //Footer
+    $footer=getfooter();
     include "View/footer.php";
 ?>

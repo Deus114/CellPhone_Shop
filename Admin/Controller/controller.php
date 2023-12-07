@@ -206,6 +206,20 @@
                     include "View/quanlybl.php";
                     break;
 
+                // Chỉnh sửa footer
+                case 'footer':
+                    $kq=getall_lhgt();
+                    include "View/quanlygtlh.php";
+                    break;
+
+                case 'modifyfooter':
+                    $lienhe=$_POST['lienhe'];
+                    $gioithieu=$_POST['gioithieu'];
+                    modifylhgt($lienhe, $gioithieu);
+                    $kq=getall_lhgt();
+                    include "View/quanlygtlh.php";
+                    break;
+
                 default :
                     include "View/home.php";
                     break;

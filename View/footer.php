@@ -3,12 +3,13 @@
             <div class="fcontainer">
                 <div class="fcolumn">
                     <h3>Giới thiệu</h3>
-                    <p>Đây là phần giới thiệu về chúng tôi...</p>
+                    <p><?php echo $footer[0]['gioithieu']; ?></p>
                 </div>
                 <div class="fcolumn">
                     <h3>Liên hệ</h3>
-                    <p>Thông tin liên hệ của chúng tôi...</p>
+                    <p><?php echo $footer[0]['lienhe']; ?></p>
                 </div>
+                <p>©Copy - 2023</p>
             </div>
         </footer>
     </div>

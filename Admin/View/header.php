@@ -21,9 +21,10 @@
             <a href="index.php?act=danhmucsanpham" style="--i:1;">Category</a> 
             <a href="index.php?act=product" style="--i:2;">Products</a> 
             <a href="index.php?act=binhluan" style="--i:3;">Comments</a> 
-            <a href="index.php?act=quanlitaikhoan" style="--i:4;">Accounts</a> 
-            <a href="index.php?act=donhang" style="--i:5;">Orders</a> 
-            <a href="index.php?act=thoat" style="--i:6;">Log out</a>
+            <a href="index.php?act=footer" style="--i:4;">Footer</a>
+            <a href="index.php?act=quanlitaikhoan" style="--i:5;">Accounts</a> 
+            <a href="index.php?act=donhang" style="--i:6;">Orders</a> 
+            <a href="index.php?act=thoat" style="--i:7;">Log out</a>
         </nav>
     </header>
     <div class="container">

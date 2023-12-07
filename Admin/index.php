@@ -7,6 +7,7 @@
     include "../Model/binhluan.php";
     include "../Model/donhang.php";
     include "../Model/user.php";
+    include "../Model/lienhegioithieu.php";
 
     include "Controller/controller.php"
 ?>
