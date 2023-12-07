@@ -188,6 +188,9 @@
                 $_SESSION['idprd']=$idprd;
                 $listbl=getallbl($idprd);
                 $kq=getproduct($idprd);
+                // Thêm 1 lượt xem cho sản phẩm
+                $watch=$kq[0]['watch']+1;
+                viewproduct($idprd, $watch);
                 include "View/spchitiet.php";
                 break;
 
@@ -239,7 +242,7 @@
                             $count++;
                         }
                         if($flag==0){
-                            $item=array($tensp,$image,$gia,$sl);
+                            $item=array($tensp,$image,$gia,$sl,$idsp);
                             $_SESSION['cart'][]=$item;
 
                         }
@@ -360,6 +363,9 @@
                     $noidung="";
                     foreach($cart as $item){
                         $sp=getproduct($item['idsp']);
+                        // Thêm lượt mua cho sản phẩm
+                        $buy=$sp[0]['buy']+1+$item['soluong'];
+                        buyproduct($sp[0]['id'], $buy);
                         $tt+=$item['soluong']*$sp[0]['gia'];
                         if($count != 0)
                             $noidung.=", ";
@@ -377,6 +383,10 @@
                     $count=0;
                     foreach($_SESSION['cart'] as $item){
                         $tt+=$item[3]*$item[2];
+                        // Thêm lượt mua cho sản phẩm
+                        $sp=getproduct($item[4]);
+                        $buy=$sp[0]['buy']+1+$item[3];
+                        buyproduct($sp[0]['id'], $buy);
                         if($count != 0)
                             $noidung.=", ";
                         $noidung.=$item[0];

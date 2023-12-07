@@ -47,7 +47,7 @@
 
     function get_sptieubieu(){
         $conn=connectdb();
-        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE sptieubieu=1");
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham WHERE sptieubieu=1 ORDER BY watch DESC");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();
@@ -73,5 +73,23 @@
         $kq=$stmt->fetchAll();
 
         return $kq;
+    }
+
+    function viewproduct($id, $watch) {
+        $conn=connectdb();
+        $sql = "UPDATE tbl_sanpham SET watch='".$watch."' WHERE id=".$id;    
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+        // execute the query
+        $stmt->execute();
+    }
+
+    function buyproduct($id, $buy) {
+        $conn=connectdb();
+        $sql = "UPDATE tbl_sanpham SET buy='".$buy."' WHERE id=".$id;    
+        // Prepare statement
+        $stmt = $conn->prepare($sql);
+        // execute the query
+        $stmt->execute();
     }
 ?>
