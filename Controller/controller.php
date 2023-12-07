@@ -508,6 +508,11 @@
                 include "View/sanpham.php";
                 break;
 
+            case 'tintuc':
+                $kq=getfooter();
+                include "View/tintuc.php";
+                break;
+
             default:
                 $listdm=getall_dm();
                 $kq=get_sptieubieu();

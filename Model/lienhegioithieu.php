@@ -19,9 +19,9 @@
         return $kq;
     }
 
-    function modifylhgt($lienhe, $gioithieu) {
+    function modifylhgt($lienhe, $gioithieu, $tintuc) {
         $conn=connectdb();
-        $sql = "UPDATE tbl_lienhegioithieu SET lienhe='".$lienhe."', gioithieu='".$gioithieu."' WHERE id=1";
+        $sql = "UPDATE tbl_lienhegioithieu SET tintuc='".$tintuc."', lienhe='".$lienhe."', gioithieu='".$gioithieu."' WHERE id=1";
         // Prepare statement
         $stmt = $conn->prepare($sql);
         // execute the query
