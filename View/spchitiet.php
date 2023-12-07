@@ -46,6 +46,8 @@
                     </div>
                     <?php
                         if(isset($_SESSION['user'])){
+                            $user=checkuser($_SESSION['user']);
+                            if($user[0]['banchat'] != 1){
                     ?>
                         <!-- Form để nhập bình luận, khi đăng nhập mới hiện ra -->
                         <form id="commentForm">
@@ -53,7 +55,7 @@
                             <textarea class="form-control input noidung" id="input" require></textarea> <br>
                             <input type="submit" name="guibl" value="Gửi">
                         </form>
-                    <?php } ?> 
+                    <?php } } ?> 
                 </div>
             </div>
         </div>

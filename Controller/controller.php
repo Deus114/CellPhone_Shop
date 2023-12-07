@@ -92,7 +92,7 @@
             // Chuyển tới form chỉnh sửa thông tin cá nhân
             case 'modifyinfo':
                 if(isset($_POST['thaydoi']) && ($_POST['thaydoi'])){
-                    if($_POST['img'] != ""){
+                    if($_FILES["img"]["name"] != ""){
                         $target_dir = "upload/";
                         $target_file = $target_dir . basename($_FILES["img"]["name"]);
                         $img= $target_file;
@@ -357,22 +357,30 @@
                 // Trường hợp người dùng
                 if(isset($_SESSION['user'])){
                     $user=checkuser($_SESSION['user']);
-                    $cart=getcart($user[0]['id']);
-                    $tt=0;
-                    $count=0;
-                    $noidung="";
-                    foreach($cart as $item){
-                        $sp=getproduct($item['idsp']);
-                        // Thêm lượt mua cho sản phẩm
-                        $buy=$sp[0]['buy']+1+$item['soluong'];
-                        buyproduct($sp[0]['id'], $buy);
-                        $tt+=$item['soluong']*$sp[0]['gia'];
-                        if($count != 0)
-                            $noidung.=", ";
-                        $noidung.=$sp[0]['tensp'];
-                        $noidung.=" * ";
-                        $noidung.=$item['soluong'];
-                        $count++;
+                    if($user[0]['banbuy'] != 1) {
+                        $cart=getcart($user[0]['id']);
+                        $tt=0;
+                        $count=0;
+                        $noidung="";
+                        foreach($cart as $item){
+                            $sp=getproduct($item['idsp']);
+                            // Thêm lượt mua cho sản phẩm
+                            $buy=$sp[0]['buy']+1+$item['soluong'];
+                            buyproduct($sp[0]['id'], $buy);
+                            $tt+=$item['soluong']*$sp[0]['gia'];
+                            if($count != 0)
+                                $noidung.=", ";
+                            $noidung.=$sp[0]['tensp'];
+                            $noidung.=" * ";
+                            $noidung.=$item['soluong'];
+                            $count++;
+                        }
+                    } else {
+                        $texterr='Bạn Không được phép đặt hàng';
+                        $user=checkuser($_SESSION['user']);
+                        $kq=getcart($user[0]['id']);
+                        include "View/cart.php";
+                        break;
                     }
                     include "View/thanhtoan.php";
                 }

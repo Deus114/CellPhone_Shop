@@ -1,12 +1,12 @@
-<form action="index.php?act=modifyinfo" method="post">
+<h3>Thông tin cá nhân</h3>
+<img src="<?=$kq[0]['avatar']?>">
+<form action="index.php?act=modifyinfo" method="post" enctype="multipart/form-data">
     <?php
         if(isset($texterr)){
             echo "<br></br>";
             echo "<font color='red'>".$texterr."</font>";
         }
     ?>
-    <h3>Thông tin cá nhân</h3>
-    <img src="<?=$kq[0]['avatar']?>">
     <input type="file" name="img">
         <?php
             if(isset($uploadOk)&&($uploadOk == 0)){

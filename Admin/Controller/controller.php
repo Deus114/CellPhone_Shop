@@ -165,7 +165,7 @@
                             // Allow certain file formats
                             if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
                             && $imageFileType != "gif" ) {
-                            $uploadOk = 0;
+                                $uploadOk = 0;
                             }
                         } else {
                             $img="";

@@ -101,3 +101,9 @@
         echo '<a href="index.php?act=dathang">Đặt hàng</a>';   
     }
 ?>
+<?php
+    if(isset($texterr)){
+        echo "<br></br>";
+        echo "<font color='red'>".$texterr."</font>";
+    }
+?>
