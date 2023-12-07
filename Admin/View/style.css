@@ -10,6 +10,8 @@
 body {
     min-height: 100vh;
     background-color: rgb(185, 223, 235);
+    display: grid;
+    grid-template-rows: auto 1fr auto;
 }
 
 /*START HEADER*/
@@ -69,7 +71,7 @@ body {
     color: #fff; 
     text-decoration: none;
     font-weight: 500;
-    margin-left: 2.0rem;
+    margin-left: 1.0rem;
 
 }
 
@@ -148,6 +150,13 @@ footer {
     background-color: #ccc;
     margin-top: 50px;
     padding: 20px;
+    min-height: 50px;
+}
+
+.container-footer {
+    width: auto;
+    max-width: 680px;
+    padding: 0 15px;
 }
 
 table, td, th {

@@ -1,4 +1,4 @@
-<div class="text-center">
+<div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
         <h2>CẬP NHẬT DANH MỤC SẢN PHẨM</h2>
     </div>
     <!-- form để thêm mới sản phẩm -->
@@ -8,7 +8,7 @@
             <input class="input-group-text" type="text" name="tendanhmuc" value="<?=$dm[0]['tendanhmuc']?>">
 
             <select name="hienthi" class="form-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                <option value="selected">Hiển thị</option>
+                <option value="selected">Choose</option>
                 <?php
                     $hienthicurr=$dm[0]['hienthi'];
                     if($hienthicurr==0){

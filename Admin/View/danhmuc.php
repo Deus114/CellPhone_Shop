@@ -1,6 +1,4 @@
-<div class="danhmucsanpham">
-
-    <div class="text-center">
+<div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
         <h2>DANH MỤC SẢN PHẨM</h2>
     </div>
     
@@ -48,4 +46,3 @@
             }
         ?>
     </table>
-</div>

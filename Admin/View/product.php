@@ -1,7 +1,10 @@
-    <div class="text-center">
+<div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
          <h2>SẢN PHẨM</h2>
+    </div>
 
     <!-- form để thêm mới sản phẩm -->
+
+    <div class="bg-light border rounded-3 p-3 p-sm-3">
     <form action="index.php?act=addprd" method="post" enctype="multipart/form-data">
         <!-- Chọn danh mục để thêm vào -->
         <select name="iddm" id="">
@@ -24,10 +27,13 @@
                 echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
             }
         ?>
-        <label for="gia" style="margin-left:-8%"> Giá: </label>
+        <br></br>
+        <label for="gia"> Giá: </label>
         <input type="text" name="gia" id="">
         <input type="submit" name="addnewprd" value="Thêm mới">
     </form>
+    </div>
+    <!-- Sort -->
     <div class="row">
         <div class="col">
             <div class="dropdown">
@@ -63,6 +69,7 @@
             </div>
         </div>
     </div>
+
     <!-- Bảng danh mục các sản phẩm -->
     <table id="products" class="table table-striped" style="width:100%">
         <tr>
@@ -107,4 +114,3 @@
             }
         ?>
     </table>
-    </div>

@@ -1,5 +1,7 @@
-<!-- Giỏ hàng bắt đầu từ đây -->
-<h2>Quản lí tài khoản</h2>
+<div class="bg-light d-flex align-items-center justify-content-center border rounded-3 p-1 p-sm-3 m-2 m-sm-4">
+    <h2>Quản lí tài khoản</h2>
+</div>
+
 <table id="accounts"  class="table table-striped" style="width:100%">
         <tr>
             <th>STT</th>

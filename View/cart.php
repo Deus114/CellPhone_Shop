@@ -19,7 +19,7 @@
 <h2>Giỏ hàng</h2>
 <?php
     if(isset($_SESSION['user'])){
-        echo '<a href="index.php?act=donhang">Lịch sử mua hàng</a>';
+        echo '<a href="index.php?act=donhang" class="none-dec">Lịch sử mua hàng</a>';
     }
 ?>
 <table>
@@ -77,12 +77,12 @@
                             <td>'.$item[0].'</td>
                             <td><img src="'.substr($item[1],3).'" width="80px"></td>
                             <td>'.number_format($item[2]).'đ</td>
-                            <td><a href="index.php?act=giamsl&id='.$count.'">-</a>
+                            <td><a href="index.php?act=giamsl&id='.$count.'" class="none-dec">-</a>
                             '.$item[3].'
-                            <a href="index.php?act=tangsl&id='.$count.'">+</a>
+                            <a href="index.php?act=tangsl&id='.$count.'" class="none-dec">+</a>
                             </td>
                             <td>'.number_format($tong).'đ</td>
-                            <td><a href="index.php?act=delcart&id='.$count.'">Xóa</a></td>
+                            <td><a href="index.php?act=delcart&id='.$count.'" class="none-dec">Xóa</a></td>
                         </tr>
                         ';
                         $stt++;
@@ -97,8 +97,8 @@
     if(isset($tt)){
         echo '<p>Thành tiền: '.number_format($tt).'đ</p>';
         // Xóa tất cả
-        echo '<a href="index.php?act=delcart">Xóa tất cả</a> | ';
-        echo '<a href="index.php?act=dathang">Đặt hàng</a>';   
+        echo '<a href="index.php?act=delcart" class="none-dec">Xóa tất cả</a> | ';
+        echo '<a href="index.php?act=dathang" class="none-dec">Đặt hàng</a>';   
     }
 ?>
 <?php

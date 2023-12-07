@@ -69,6 +69,11 @@
                         include "View/signup.php";
                         break;
                     }
+                    if(strlen($pass)<2 || strlen($pass)>20){
+                        $err_text='Mật Khẩu phải có từ 2-20 ký tự';
+                        include "View/signup.php";
+                        break;
+                    }
                     // Kiểm tra tên đăng nhập có tồn tại hay không
                     $kq=checkuser($user);
                     if(count($kq) == 0){
