@@ -112,4 +112,34 @@
 
         return $kq;
     }
+
+    function getall_hw(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY watch DESC ");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function getall_lw(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY watch ASC ");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
+
+    function getall_lb(){
+        $conn=connectdb();
+        $stmt = $conn->prepare("SELECT * FROM tbl_sanpham ORDER BY buy ASC ");
+        $stmt->execute();
+        $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
+        $kq=$stmt->fetchAll();
+
+        return $kq;
+    }
 ?>

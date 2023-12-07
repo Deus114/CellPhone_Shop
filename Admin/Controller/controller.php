@@ -221,6 +221,30 @@
                     include "View/quanlygtlh.php";
                     break;
 
+                case 'sort':
+                    if($_GET['id']==1)
+                        $kq=getall_hp();
+                    else    
+                        $kq=getall_lp();
+                    include "View/product.php";
+                    break;
+
+                case 'sortview':
+                    if($_GET['id']==1)
+                        $kq=getall_hw();
+                    else    
+                        $kq=getall_lw();
+                    include "View/product.php";
+                    break;
+
+                case 'sortbuy':
+                    if($_GET['id']==1)
+                        $kq=getallsp();
+                    else    
+                        $kq=getall_lb();
+                    include "View/product.php";
+                    break;
+
                 default :
                     include "View/home.php";
                     break;
