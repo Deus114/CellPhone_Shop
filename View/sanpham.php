@@ -14,6 +14,7 @@
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                     <?php
                         foreach($listdm as $dm){
+                            if($dm['hienthi']==1)
                             echo '<li class="dropdown-item"><a class="text-decoration-none" href="index.php?act=sanpham&id='.$dm['id'].'">'.$dm['tendanhmuc'].'</a></li>';
                         }
                     ?>

@@ -5,6 +5,7 @@
                 <ul class="list-group">
                   <?php
                     foreach($listdm as $dm){
+                      if($dm['hienthi']==1)
                       echo '<li class="list-group-item"><a href="index.php?act=sanpham&id='.$dm['id'].'" class="text-decoration-none">'.$dm['tendanhmuc'].'</a></li>';
                     }
                   ?>
