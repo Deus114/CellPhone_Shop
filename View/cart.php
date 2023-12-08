@@ -48,12 +48,12 @@
                             <td>'.$item[0]['tensp'].'</td>
                             <td><img src="'.substr($item[0]['image'],3).'" width="80px"></td>
                             <td>'.number_format($item[0]['gia']).'đ</td>
-                            <td><a href="index.php?act=giamsl&id='.$sp['id'].'">-</a>
+                            <td><a href="index.php?act=giamsl&id='.$sp['id'].'" class="none-dec">-</a>
                             '.$sp['soluong'].'
-                            <a href="index.php?act=tangsl&id='.$sp['id'].'">+</a>
+                            <a href="index.php?act=tangsl&id='.$sp['id'].'" class="none-dec">+</a>
                             </td>
                             <td>'.number_format($tong).'đ</td>
-                            <td><a href="index.php?act=delcart&id='.$sp['id'].'">Xóa</a></td>
+                            <td><a href="index.php?act=delcart&id='.$sp['id'].'" class="none-dec">Xóa</a></td>
                         </tr>
                         ';
                         $stt++;
