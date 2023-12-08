@@ -3,7 +3,7 @@
             <div class="col">
                 <div class="box-large">
                     <div class="box-top">
-                    <img id="img-large" class="img-fluid" src="<?php echo substr($kq[0]['image'],3); ?>" alt="Product">
+                    <img id="img-large" class="img-fluid" src="<?php echo substr($kq[0]['image'],3); ?>" alt="<?=substr($kq[0]['image'],10)?>">
                     </div>
                 </div>
             </div>
@@ -16,7 +16,7 @@
                 <p><?php echo $kq[0]['mota']; ?></p>
                 <form action="index.php?act=addtocart" method="post">
                     <input type="hidden" name="idsp" value="<?php echo $kq[0]['id']; ?>">
-                    <input class=" buy btn btn-primary" type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                    <input class=" buy btn btn-primary respo" type="submit" name="addcart" value="Thêm vào giỏ hàng">
                 </form>
             </div>
         </div>

@@ -7,7 +7,7 @@
     <div class="bg-light border rounded-3 p-3 p-sm-3">
     <form action="index.php?act=addprd" method="post" enctype="multipart/form-data">
         <!-- Chọn danh mục để thêm vào -->
-        <select name="iddm" id="">
+        <select name="iddm">
             <option value="0">--Chọn danh mục--</option>
             <?php
                 // Nếu danh muc sản phẩm không rỗng thì hiển thị toàn bộ
@@ -19,9 +19,9 @@
             ?>
         </select>
         <label for="nameprd"> Tên sản phẩm: </label>
-        <input type="text" name="nameprd" id="">
+        <input type="text" name="nameprd">
         <label for="img"> Chọn hình ảnh: </label>
-        <input type="file" name="img" id="">
+        <input type="file" name="img">
         <?php
             if(isset($uploadOk)&&($uploadOk == 0)){
                 echo "<br>";
@@ -30,7 +30,7 @@
         ?>
         <br></br>
         <label for="gia"> Giá: </label>
-        <input type="text" name="gia" id="">
+        <input type="text" name="gia">
         <input type="submit" name="addnewprd" value="Thêm mới">
     </form>
     </div>

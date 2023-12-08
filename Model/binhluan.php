@@ -18,7 +18,7 @@
 
     function getall_bl(){
         $conn=connectdb();
-        $stmt = $conn->prepare("SELECT * FROM tbl_binhluan");
+        $stmt = $conn->prepare("SELECT * FROM tbl_binhluan ORDER BY date DESC");
         $stmt->execute();
         $result = $stmt->setFetchMode(PDO::FETCH_ASSOC);
         $kq=$stmt->fetchAll();

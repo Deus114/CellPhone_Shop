@@ -428,7 +428,7 @@
                 $address=$_POST['address'];
                 $madonhang="SP";
                 date_default_timezone_set('Asia/Ho_Chi_Minh');
-                $date=date('h:ia d/m/Y');
+                $date=date('d/m/Y h:ia');
                 // Kiểm tra hợp lệ
                 // Tên
                 $name = trim($name);
@@ -439,15 +439,7 @@
                     header('location: index.php?act=dathang');
                     break;
                 }
-                
-                //Email
-                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
-                    $_SESSION['texterr']='Email có dạng stt@...';
-                    $user=$_SESSION['user'];
-                    $kq=checkuser($user);
-                    header('location: index.php?act=dathang');
-                    break;
-                }
+
                 // Điện thoại
                 // Loại bỏ khoảng trắng và các ký tự không phải số
                 $sdt = preg_replace('/[^0-9]/', '', $sdt);
@@ -458,6 +450,16 @@
                     header('location: index.php?act=dathang');
                    break;
                 }
+                
+                //Email
+                if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+                    $_SESSION['texterr']='Email có dạng stt@...';
+                    $user=$_SESSION['user'];
+                    $kq=checkuser($user);
+                    header('location: index.php?act=dathang');
+                    break;
+                }
+                
                 // Địa chỉ
                 if(strlen($address)<2 || strlen($address)>30){
                     $_SESSION['texterr']='Địa chỉ nhà không hợp lệ';
@@ -507,6 +509,7 @@
                 include "View/sanpham.php";
                 break;
 
+            // Sắp xếp sản phẩm theo giá
             case 'sort':
                 $id=$_GET['id'];
                 if($id==1) $kq=getall_hp(); // Sort high
@@ -515,6 +518,7 @@
                 include "View/sanpham.php";
                 break;
 
+            // Chuyển tới trang tin tức
             case 'tintuc':
                 $kq=getfooter();
                 include "View/tintuc.php";

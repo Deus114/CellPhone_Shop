@@ -26,13 +26,13 @@
             <div class="mb-2">
                 <div class="input-group mb-1">
                     <label for="nameprd" class="input-group-text bg-light"> Tên sản phẩm </label>
-                    <input type="text" class="form-control" name="nameprd" id="" value="<?=$iddmcur=$prd[0]['tensp']?>">
+                    <input type="text" class="form-control" name="nameprd" value="<?=$iddmcur=$prd[0]['tensp']?>">
                 </div>
                 <div class="input-group mb-1">
                     <label for="img" class="input-group-text bg-light" width=80> Hình ảnh </label>
-                    <img src="<?=$iddmcur=$prd[0]['image']?>" width=80 alt="">
+                    <img src="<?=$iddmcur=$prd[0]['image']?>" width=80>
                 </div>
-                <input type="file" name="img" id="" class="form-control" width=80>
+                <input type="file" name="img" class="form-control" width=80>
                     <?php
                         if(isset($uploadOk)&&($uploadOk == 0)){
                             echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
@@ -42,7 +42,7 @@
 
             <div class="input-group mb-2">
                 <label for="gia" class="input-group-text bg-light"> Giá </label>
-                <input type="text" class="form-control" name="gia" id="" value="<?=$iddmcur=$prd[0]['gia']?>">
+                <input type="text" class="form-control" name="gia" value="<?=$iddmcur=$prd[0]['gia']?>">
             </div>
             
             <div class="input-group mb-2">
@@ -64,12 +64,12 @@
             
             <div class="input-group mb-2">
                 <label for="mota" class="input-group-text" > Mô tả </label>
-                <input type="text" class="form-control" name="mota" id="" value="<?=$iddmcur=$prd[0]['mota']?>">
+                <input type="text" class="form-control" name="mota" value="<?=$iddmcur=$prd[0]['mota']?>">
             </div>
 
             <div class="input-group mb-2">
                 <label for="chitiet" class="input-group-text" > Chi tiết </label>
-                <input type="text" class="form-control" name="chitiet" id="" value="<?=$iddmcur=$prd[0]['chitiet']?>">
+                <input type="text" class="form-control" name="chitiet" value="<?=$iddmcur=$prd[0]['chitiet']?>">
             </div>
 
             <div class="input-group mb-2">

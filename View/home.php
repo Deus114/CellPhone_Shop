@@ -24,13 +24,13 @@
                       $count=0;
                     }
                     echo '<div class="card product col-4">
-                              <a href="index.php?act=spchitiet&id='.$sp['id'].'"> <img class="rounded mx-auto d-block" src="'.substr($sp['image'],3).'" alt="Card image" style="width:100%"> </a>
+                              <a href="index.php?act=spchitiet&id='.$sp['id'].'"> <img class="rounded mx-auto d-block" src="'.substr($sp['image'],3).'" alt="'.substr($sp['image'],10).'" style="width:100%"> </a>
                               <div class="card-body">
                                 <p class="card-text">'.$sp['tensp'].'</p>
                                 <p class="card-text">Giá: '. number_format($sp['gia']).'đ</p>
                                 <form action="index.php?act=addtocart" method="post">
                                   <input type="hidden" name="idsp" value="'.$sp['id'].'">
-                                  <input class="btn btn-primary" type="submit" name="addcart" value="Thêm vào giỏ hàng">
+                                  <input class="btn btn-primary res" type="submit" name="addcart" value="Thêm vào giỏ hàng">
                                 </form>
                               </div>
                           </div>';

@@ -64,6 +64,10 @@ aside h3 {
 	color: black;
 }
 
+.res {
+	width: 80% !important;
+}
+
 /* Css for View/spchitiet.php */
 .buy {
 	margin-left: 30%;
@@ -104,6 +108,10 @@ aside h3 {
 
 #comment{
 	margin-bottom: 20px;
+}
+
+.respo{
+	width: 40% !important;
 }
 
 /* Css for View/cart.php */
@@ -171,6 +179,10 @@ footer {
 	width: 70%;
 }
 
+.resp {
+	width: 100% !important;
+}
+
 /* Css for View/tintuc.php */
 .tintuc {
 	margin-top: 20px;
@@ -217,3 +229,4 @@ footer {
 .lbl {
 	padding: 2px;
 }
+

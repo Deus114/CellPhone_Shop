@@ -10,7 +10,7 @@
         $idprd=$_SESSION['idprd'];
     $noidung=$_POST['noidung'];
     date_default_timezone_set('Asia/Ho_Chi_Minh');
-    $date=date('h:i:sa d/m/Y');
+    $date=date('d/m/Y h:i:sa');
     // Thêm bình luận mới vào db
     addnewbl($noidung, $iduser, $idprd, $date, $user);
     // Lấy danh sách bình luận của sản phẩm để hiển thị
